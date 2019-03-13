@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "mern",
   "version": "1.0.0",
@@ -26,3 +27,34 @@
     "if-env": "^1.0.4"
   }
 }
+=======
+{
+  "name": "project3",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-scripts": "2.1.8"
+  },
+  "engines": {
+    "node": "10.15.1",
+    "npm": "6.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
+>>>>>>> 23ec79c443b9c99a5613789739d82305ddf0f8ae
