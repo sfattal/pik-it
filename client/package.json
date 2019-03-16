@@ -2,6 +2,10 @@
   "name": "project-3",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.5.0",
+    "npm": "6.9.0"
+  },
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
