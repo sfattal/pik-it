@@ -1,6 +1,6 @@
 import React,{Component } from 'react';
 import Header from './components/Header'
-import Form from './components/form'
+import Form from './components/Form'
 import './App.css';
 import Container from './components/Container/index'
 
