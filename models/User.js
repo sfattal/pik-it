@@ -1,24 +1,28 @@
 module.exports = function(sequelize, DataTypes) {
-    const Submitter = sequelize.define(
-        "Submitter", 
+    const User = sequelize.define(
+        "User", 
         {
-            submitter_id: {
+            user_id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 primaryKey: true
             },
-            submitter_name: {
+            user_name: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            submitter_email: {
+            user_email: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            submitter_key: {
+            user_key: {
                 type: DataTypes.STRING,
+                allowNull: false
+            },
+            temp_account: {
+                type: DataTypes.BOOLEAN,
                 allowNull: false
             }
         });
-    return Submitter;
+    return User;
   };
