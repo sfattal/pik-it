@@ -10,7 +10,7 @@ function Header () {
         <Nav>
           {/* <Nav.Link className="float-right" href="#home">Sign-in</Nav.Link> */}
           {/* <Nav.Link className="float-right" href="#home">Sign-up</Nav.Link> */}
-          <Nav.Link className="float-right" href="#link">Create Choosish</Nav.Link>   
+          <Nav.Link className="float-right" href="#link">Create choosish</Nav.Link>   
         </Nav>
     </Navbar>
   )
