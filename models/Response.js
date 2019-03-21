@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
-            user_id: {
+            submitter_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
@@ -24,5 +24,5 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
-    return Choice;
+    return Response;
   };
