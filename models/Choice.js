@@ -16,5 +16,15 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
+
+        Choice.associate = function(models) {
+            Choice.belongsTo(models.Poll, {
+            foreignKey: {
+                name: "poll_id",
+                allowNull: false
+            }
+        });
+    };
+    
     return Choice;
-  };
+};

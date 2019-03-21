@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Poll = sequelize.define(
-      "All\Polls", 
+      "Poll", 
       {
         poll_id: {
           type: DataTypes.INTEGER,
