@@ -24,5 +24,26 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
+        
+        Response.associate = function(models) {
+            Response.belongsTo(models.Poll, {
+              foreignKey: {
+                name: "poll_id",
+                allowNull: false
+              }
+            });
+            Response.belongsTo(models.Choice, {
+                foreignKey: {
+                    name: "choice_id",
+                    allowNull: false
+                }
+            });
+            Response.belongsTo(models.Choice, {
+                foreignKey: {
+                    name: "user_id",
+                    allowNull: false
+                }
+            });
+          };
     return Response;
   };
