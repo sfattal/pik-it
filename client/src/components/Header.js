@@ -1,22 +1,36 @@
-import React from "react"
-import {Navbar,Nav,NavDropdown,FormControl,Form,Button} from "react-bootstrap" 
-
-
-function Header () {
+import React from "react";
+import { Link } from "react-router-dom";
+import "./style.css";
+//Simple nav bar taken from boot strap but some logic is added to it
+// Depending on the current path, this component sets the "active" class on the appropriate navigation link item
+function Navbar() {
   return (
-      <Navbar bg="light" expand="lg">
-    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="float-right">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#link">Link</Nav.Link>   
-      </Nav>
-      
-    </Navbar.Collapse>
-  </Navbar>
-   )
-  
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="/">
+        Choosey
+      </Link>
+      <div>
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link
+              to="/create"
+              className={window.location.pathname === "/create" ? "nav-link active" : "nav-link"}
+            >
+              Create Choosey
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/edit"
+              className={window.location.pathname === "/edit" ? "nav-link active" : "nav-link"}
+            >
+              Edit Choosey
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
 }
 
-export default Header; 
+export default Navbar;
