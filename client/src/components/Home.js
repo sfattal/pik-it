@@ -1,10 +1,12 @@
 import React from "react"
 
-Home = () => {
+function Home () {
    return(
-       <main>
-           <h1>Choosish</h1>
-       </main>
+       <div>
+        <Container>
+        <Form />
+        </Container>
+       </div>
    ) 
 }
 
