@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Container from "../components/Container/index"
+import "./pages.css"
 
 
 
@@ -18,10 +19,14 @@ class Edit extends Component {
 
   render() {
     return (
-      <div>
-    <Container > 
-        <h1> Edit Page </h1>
-    </Container>
+    <div id="editPage">
+      <Container > 
+        <div class="row">
+          <div class="col-12">
+            <h1> Edit Choosey </h1>
+          </div>
+        </div>
+      </Container>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Container from "../components/Container/index"
+import "./pages.css"
 
 class Create extends Component {
   state = {
@@ -19,10 +20,33 @@ class Create extends Component {
 
   render() {
     return (
-      <div>
-        <Container style={{ minHeight: "80%" }}>
-         <h1> Create Element </h1> 
-        </Container>
+       <div id="createPage">
+      <Container > 
+        <div class= "fluid-container">
+            <div class="row">
+                  <div class="col-12">
+                    <h1> Create Choosey </h1>
+                  </div>
+            </div>
+            <div class = "row pt-5"> 
+                  <div class = "col-4">
+                    <form> 
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter an option"/>
+                      </form>
+                  </div>
+                  <div class="col-2">
+                    <button id="addOptionBtn" type="button" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+            <div class="row pt-5">
+                  <div class="col-12">
+
+                  <button type="button" class="btn btn-primary btn-lg btn-block">Submit </button>
+
+                  </div>
+            </div>
+        </div>
+      </Container>
       </div>
     );
   }
