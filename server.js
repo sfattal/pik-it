@@ -3,6 +3,9 @@ const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3306;
 
+var db = require("./models");
+// var seed = require("./seeds");
+
 // Configure body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -24,8 +27,8 @@ if (process.env.NODE_ENV === "test") {
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
-  seed(db);
-  server.listen(PORT, function() {
+  // seed(db);
+  app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
