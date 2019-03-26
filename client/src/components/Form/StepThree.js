@@ -1,5 +1,4 @@
 import React from 'react'
-import Container from '../Container/index'
 import Datetime from 'react-datetime'
 
 export class StepThree extends React.Component {
@@ -17,12 +16,10 @@ export class StepThree extends React.Component {
 
   render () {
     return (
-      <Container>
-        <div>
-          <label>Choose a date and time to end this Choosey</label>
-          <Datetime/>
-        </div>
-      </Container>
-    )
+      <div>
+        <label>Choose a date and time to end this Choosey</label>
+        <Datetime/>
+      </div>
+  )
   }
 }
