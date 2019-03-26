@@ -9,26 +9,26 @@ module.exports = function(app) {
     });
   });
 
-//   app.get("/api/authors/:id", function(req, res) {
-//     db.Choice.findOne({
-//         where: {
-//         id: req.params.id
-//         },
-//         include: [db.Poll]
-//     }).then(function(dbChoice) {
-//         res.json(dbChoice);
-//     });
-// });
+  app.get("/api/polls/:id", function(req, res) {
+    db.Choice.findOne({
+        where: {
+        id: req.params.id
+        },
+        include: [db.Poll]
+    }).then(function(dbChoice) {
+        res.json(dbChoice);
+    });
+});
 
-//   app.get("/api/results/:pollid"), function(req, res) {
-//       db.Response.findAll({
-//           where: {
-//               poll_id: pollid
-//           },
-//           include: [db.Choice]
-//       }).then(function(dbResult) {
-//         console.log(dbResult)
-//           res.json(dbResult)
-//       })
-//   }
+  app.get("/api/results/:pollid"), function(req, res) {
+      db.Response.findAll({
+          where: {
+              poll_id: pollid
+          },
+          include: [db.Choice]
+      }).then(function(dbResult) {
+        console.log(dbResult)
+          res.json(dbResult)
+      })
+  }
 }
