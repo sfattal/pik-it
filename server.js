@@ -1,7 +1,6 @@
 const express = require("express");
-const routes = require("./routes");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000
 
 var db = require("./models");
 // var seed = require("./seeds");
@@ -14,8 +13,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/public"));
 }
 
-// Add routes, both API and view
-app.use(routes);
+require("./routes/apiRoutes.js")(app);
 
 var syncOptions = { force: false };
 
