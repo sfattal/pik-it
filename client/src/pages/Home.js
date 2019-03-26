@@ -1,10 +1,8 @@
-import React from "react"
-import {Card,Button} from "react-bootstrap" 
-import Hero from "../components/Hero/index"
-import Container from "../components/Container/index"
-import { Link } from "react-router-dom";
-
-
+import React from 'react'
+import {Card,Button} from 'react-bootstrap' 
+import Hero from '../components/Hero/index'
+import Container from '../components/Container/index'
+import { Link } from 'react-router-dom'
 
 function Home () {
    return(
@@ -29,7 +27,7 @@ function Home () {
         </Container>
         </Hero>
         
-       </div>
+      </div>
    ) 
 }
 
