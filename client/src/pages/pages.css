@@ -5,3 +5,8 @@
     background-position: center;
     position: relative;
     }
+
+#mainCard {
+    background-color:rgba(0, 0, 0, 0.05);
+    color:white;
+}

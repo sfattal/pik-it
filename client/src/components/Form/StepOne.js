@@ -30,7 +30,7 @@ export class StepOne extends React.Component {
       <div>
         <label>Title</label>
         <input
-          className='u-full-width'
+          className='u-full-width required'
           placeholder='Title'
           type='text'
           onChange={this.handleTitleChanged}
