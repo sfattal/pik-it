@@ -2,8 +2,16 @@
 //     Responses.findAll({ where: { poll_id = pollID } })
 // }
 
-function determineRankings() {
+var results = {}
+
+function determineChoices(repsonses) {
+    for (i=0; i<responses.length; i++) {
     
+    }
+}
+
+function determineRankings(responses) {
+
 }
 
 const db = require("../models");
@@ -18,6 +26,7 @@ module.exports = {
         include: [db.Choice]
     }).then(function(dbResult) {
       console.log(dbResult)
+      determineRankings(dbResult)
         res.json(dbResult)
     })
   }
