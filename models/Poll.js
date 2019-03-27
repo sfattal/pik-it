@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
         poll_name: {
           type: DataTypes.STRING
         },
+        poll_key: {
+          type: DataTypes.STRING
+        },
         createdAt: {
           type: DataTypes.DATE
         },
