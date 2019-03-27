@@ -1,4 +1,5 @@
-{
+module.exports = 
+  {
     "development": {
       "username": "root",
       "password": "password",
@@ -15,11 +16,10 @@
       "dialect": "mysql"
     },
     "production": {
-      "username": "root",
-      "password": null,
-      "database": "database_production",
-      "host": "127.0.0.1",
+      "username": process.env.JAWSDB_USERNAME,
+      "password": process.env.JAWSDB_PASSWORD,
+      "database": "choosedb_production",
+      "host": process.env.JAWSDB_HOST,
       "dialect": "mysql"
     }
   }
-  
