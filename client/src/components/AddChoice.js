@@ -1,7 +1,8 @@
 import React from 'react'
+import StepTwo from './Form/StepOne'
 
 // deleteChoice = () => {
-//     // function that removes the choice from the 
+//     // function that removes the choice from the array
 // }
 
 function PollItem(props) {
