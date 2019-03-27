@@ -1,13 +1,18 @@
 var db = require("../models");
+var router = require("express").Router
+var controller = require("../controllers/pollController.js")
+
 
 module.exports = function(app) {
   app.get("/api/polls", function(req, res) {
-    db.Polls.findAll({
+    db.Poll.findAll({
     }).then(function(dbPolls) {
+      console.log('hello')
       console.log(dbPolls)
-      res.json(dbPolls);
+      res.send(dbPolls);
     });
   });
+
 
 //   app.get("/api/authors/:id", function(req, res) {
 //     db.Choice.findOne({
@@ -20,15 +25,6 @@ module.exports = function(app) {
 //     });
 // });
 
-//   app.get("/api/results/:pollid"), function(req, res) {
-//       db.Response.findAll({
-//           where: {
-//               poll_id: pollid
-//           },
-//           include: [db.Choice]
-//       }).then(function(dbResult) {
-//         console.log(dbResult)
-//           res.json(dbResult)
-//       })
-//   }
+  app.get("/api/results/:pollid", controller.doAllTheWork)
+
 }
