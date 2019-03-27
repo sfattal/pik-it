@@ -31,6 +31,7 @@ export class StepOne extends React.Component {
         <div className='row'>
           <label>Title</label>
           <input
+            id='title'
             className='u-full-width required'
             placeholder='Title'
             type='text'
@@ -42,6 +43,7 @@ export class StepOne extends React.Component {
         <div className='row'>
           <label>Description</label>
           <input
+            id='desc'
             className='u-full-width'
             placeholder='Description'
             type='text'
@@ -52,6 +54,7 @@ export class StepOne extends React.Component {
         <div className='row'>
           <label>Email</label>
           <input
+            id='email'
             className='u-full-width required'
             placeholder='test@mailbox.com'
             type='email'
