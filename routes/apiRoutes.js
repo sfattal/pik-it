@@ -1,14 +1,19 @@
 var db = require("../models");
+var router = require("express").Router
+var controller = require("../controllers/pollController.js")
+
 
 module.exports = function(app) {
   app.get("/api/polls", function(req, res) {
-    db.Polls.findAll({
+    db.Poll.findAll({
     }).then(function(dbPolls) {
+      console.log('hello')
       console.log(dbPolls)
-      res.json(dbPolls);
+      res.send(dbPolls);
     });
   });
 
+<<<<<<< HEAD
   app.get("/api/polls/:id", function(req, res) {
     db.Choice.findOne({
         where: {
@@ -31,4 +36,20 @@ module.exports = function(app) {
           res.json(dbResult)
       })
   }
+=======
+
+//   app.get("/api/authors/:id", function(req, res) {
+//     db.Choice.findOne({
+//         where: {
+//         id: req.params.id
+//         },
+//         include: [db.Poll]
+//     }).then(function(dbChoice) {
+//         res.json(dbChoice);
+//     });
+// });
+
+  app.get("/api/results/:pollid", controller.doAllTheWork)
+
+>>>>>>> a282fa92019cb554cdea82a313bb56f9d86115f6
 }
