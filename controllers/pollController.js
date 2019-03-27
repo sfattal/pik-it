@@ -49,7 +49,7 @@ function determineRankings(ranks, poll_id) {
 
 const db = require("../models");
 
-// Defining methods for the booksController
+// Defining methods for the controller
 module.exports = {
   doAllTheWork: function(req, res) {
       var poll_id = req.params.pollid
@@ -64,5 +64,24 @@ module.exports = {
     //   determineRankings(rankings, poll_id)
         res.json(dbResult)
     })
+  },
+  getPollChoices: function(req, res) {
+      console.log("getting choices...")
+      var poll_key = req.params.pollkey
+      db.Poll.findAll({
+        where: {
+            poll_key: req.params.pollkey
+        },
+        include: [db.Choice]
+      }).then(function(dbResult) {
+          console.log("got choices");
+          res.json(dbResult);
+      })
+  },
+  postToPoll: function(req, res) {
+      console.log("posting to poll");
+      db.Poll.Create({
+          
+      })
   }
 }
