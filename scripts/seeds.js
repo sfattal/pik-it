@@ -2,7 +2,6 @@
  module.exports = function seed(db) {
   db.Poll.findOne({}).then(function(data) {
    if (!data) {
-     console.log(db);
     db.Poll.create({ poll_name: "Stanford", poll_key: "Xjdjs7753dD" });
     db.Choice.create({ poll_id: 1, choice_text: "A" });
     db.Choice.create({ poll_id: 1, choice_text: "B" });

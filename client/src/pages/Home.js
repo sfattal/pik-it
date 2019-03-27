@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
-import {Card,Button} from 'react-bootstrap' 
+import React, {Component} from 'react'
 import Hero from '../components/Hero/index'
 import Container from '../components/Container/index'
-import { Link } from 'react-router-dom'
+import '../pages/pages.css'
 
 class Home extends Component {
    render() {
@@ -11,18 +10,13 @@ class Home extends Component {
             <Hero backgroundImage = "https://images.unsplash.com/photo-1508796079212-a4b83cbf734d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80">
                <Container>
                   <h1> Choosey </h1>
-                  <h2> Lorem ipsum dolor sit amet, consectetur adipiscing elit </h2>
-                  <Card id="mainCard" className="text-center p-3">
-                     <Card.Body>
-                        <Card.Title>Create a Choosey</Card.Title>
-                        <Card.Text>
-                        Click the link below to get started
-                        </Card.Text>
-                        <Link to="/create"> 
-                        <Button variant="primary">Create</Button>
-                        </Link>
-                     </Card.Body>
-                  </Card>
+                  <div id="mainCard" class="card text-center">
+                     <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="/create" class="btn btn-primary">Go somewhere</a>
+                     </div>
+                  </div>
                </Container>
             </Hero>
          </div>

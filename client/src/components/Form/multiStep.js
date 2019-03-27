@@ -18,17 +18,20 @@ const getButtonsState = (indx, length) => {
   if (indx > 0 && indx < length - 1) {
     return {
       showPreviousBtn: true,
-      showNextBtn: true
+      showNextBtn: true,
+      showSubmitBtn: false
     }
   } else if (indx === 0) {
     return {
       showPreviousBtn: false,
-      showNextBtn: true
+      showNextBtn: true,
+      showSubmitBtn: false
     }
   } else {
     return {
       showPreviousBtn: true,
-      showNextBtn: false
+      showNextBtn: false,
+      showSubmitBtn: true
     }
   }
 }
@@ -47,6 +50,8 @@ export default function MultiStep(props) {
   const next = () => setStepState(compState + 1)
   
   const previous = () => setStepState((compState > 0) ? compState - 1 : compState)
+
+  // const submit = () => setStepState()
 
   const handleKeyDown = (evt) => evt.which === 13 ? next(props.steps.length) : {}
 
@@ -90,6 +95,13 @@ export default function MultiStep(props) {
             onClick={next}
           >
             Next
+          </button>
+
+          <button
+            style={buttonsState.showSubmitBtn ? {} : { display: 'none' }}
+            // onClick={submit}
+          >
+            Submit
           </button>
         </div>
       </div>
