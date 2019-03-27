@@ -13,6 +13,14 @@ module.exports = function(sequelize, DataTypes) {
         poll_key: {
           type: DataTypes.STRING
         },
+        poll_description: {
+          type: DataTypes.TEXT,
+          allowNull: true
+        },
+        poll_expiration: {
+          type: DataTypes.DATE,
+          allowNull: true
+        },
         createdAt: {
           type: DataTypes.DATE
         },
@@ -20,6 +28,18 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.DATE
         }
       });
+
+      Poll.associate = function(models) {
+        Poll.hasMany(models.Choice, {
+        foreignKey: {
+            name: "poll_id",
+            allowNull: false
+        }
+    });
+    };
+    
     return Poll;
   };
+
+
   

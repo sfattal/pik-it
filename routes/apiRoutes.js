@@ -23,6 +23,7 @@ module.exports = function(app) {
 //         res.json(dbChoice);
 //     });
 // });
+  app.get("/api/polls/:pollkey", controller.getPollChoices)
 
   app.get("/api/results/:pollid", controller.doAllTheWork)
 
