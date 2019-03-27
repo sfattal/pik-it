@@ -12,6 +12,7 @@ module.exports = function(app) {
       res.send(dbPolls);
     });
   });
+<<<<<<< HEAD
 
 <<<<<<< HEAD
   app.get("/api/polls/:id", function(req, res) {
@@ -37,6 +38,9 @@ module.exports = function(app) {
       })
   }
 =======
+=======
+  
+>>>>>>> 303e8f731a7a641b904bad74b68b0afeaca4fdc7
 
 //   app.get("/api/authors/:id", function(req, res) {
 //     db.Choice.findOne({
