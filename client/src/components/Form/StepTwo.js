@@ -1,5 +1,5 @@
 import React from 'react'
-import PollItem from '../PollItem'
+import AddChoice from '../AddChoice'
 
 export class StepTwo extends React.Component {
   constructor () {
@@ -20,26 +20,34 @@ export class StepTwo extends React.Component {
   handleChoiceChanged (event) {
     this.setState({choice: event.target.value})
   }
-  renderPollItems() {
+  renderAddChoices() {
     return this.state.choices.map(choice => {
-      return <PollItem poll={{description:choice}}/>
+      return <AddChoice poll={{description:choice}}/>
     })
   }
   render () {
     console.log(this.state.choices)
     return (
       <div>
-        {this.renderPollItems()}
+        {this.renderAddChoices()}
         <label>Choice</label>
-        <input
-          className='u-full-width required userChoice'
-          placeholder='Example Choice'
-          type='text'
-          onChange={this.handleChoiceChanged}
-          value={this.state.choice}
-          autoFocus
-        />
-        <button onClick={this.addChoice}>+</button>
+        <div className='row'>
+          <div className='col-11'>
+            <input
+              className='u-full-width required userChoice'
+              placeholder='Example Choice'
+              type='text'
+              onChange={this.handleChoiceChanged}
+              value={this.state.choice}
+              autoFocus
+            />
+          </div>
+          <div className='col-1'>
+            <button onClick={this.addChoice}>+</button>
+          </div>
+          
+          
+        </div>
       </div>
     )
   }
