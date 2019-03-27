@@ -2,16 +2,11 @@ module.exports = function(sequelize, DataTypes) {
     const Response = sequelize.define(
         "Response", 
         {
-            response_id: {
-                type: DataTypes.INTEGER,
-                autoIncrement: true,
-                primaryKey: true
-            },
             poll_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
-            submitter_id: {
+            user_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
@@ -38,12 +33,12 @@ module.exports = function(sequelize, DataTypes) {
                     allowNull: false
                 }
             });
-            Response.belongsTo(models.Choice, {
-                foreignKey: {
-                    name: "user_id",
-                    allowNull: false
-                }
-            });
+            // Response.belongsTo(models.User, {
+            //     foreignKey: {
+            //         name: "user_id",
+            //         allowNull: false
+            //     }
+            // });
           };
     return Response;
   };
