@@ -12,7 +12,7 @@ module.exports = function(app) {
       res.send(dbPolls);
     });
   });
-
+  
 
 //   app.get("/api/authors/:id", function(req, res) {
 //     db.Choice.findOne({
