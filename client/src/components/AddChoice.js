@@ -1,5 +1,9 @@
 import React from 'react'
 
+// deleteChoice = () => {
+//     // function that removes the choice from the 
+// }
+
 function PollItem(props) {
     return (
         <div className="poll-item">

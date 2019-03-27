@@ -52,3 +52,5 @@ export class StepTwo extends React.Component {
     )
   }
 }
+
+export default StepTwo
