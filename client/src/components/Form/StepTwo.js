@@ -11,11 +11,38 @@ export class StepTwo extends React.Component {
     this.handleChoiceChanged = this.handleChoiceChanged.bind(this);
   }
 
-  addChoice = () => {
-    var {choice, choices} = this.state;
-    const newChoices = [...choices, choice]
-    this.setState({choices: newChoices, choice: ""})
+   emptyString(){
+    alert("please enter a string");
   }
+
+  
+
+    duplicateChoice = () => {
+      alert('you have entered a duplicate value, please re-enter another choice')
+
+    }
+
+  addChoice = () => {
+    console.log(this.state.choice)
+  
+    
+          var {choice, choices} = this.state;
+
+          if (choice === "") {
+            this.emptyString(); 
+          }
+          else if (choices.includes (choice)) { 
+            this.duplicateChoice();
+          }
+          else {
+          const newChoices = [...choices, choice]
+          this.setState({choices: newChoices, choice: ""})
+
+        }
+     
+  }
+
+  
 
   // deleteChoice = () => {
   //     // function that removes the choice from the array
