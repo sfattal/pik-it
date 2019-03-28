@@ -17,19 +17,20 @@ export class StepTwo extends React.Component {
     this.setState({choices: newChoices, choice: ""})
   }
 
+  // deleteChoice = () => {
+  //     // function that removes the choice from the array
+  // }
+
   handleChoiceChanged (event) {
     this.setState({choice: event.target.value})
   }
 
   renderAddChoices() {
     return this.state.choices.map(choice => {
-      return <AddChoice choice={{name:choice}} deleteChoice={{this.deleteChoice}}/>
+      return <AddChoice choice={{name:choice}}/>
+      // deleteChoice={{this.deleteChoice}}
     })
   }
-
-  // deleteChoice = () => {
-  //     // function that removes the choice from the array
-  // }
 
   render () {
     console.log(this.state.choices)
