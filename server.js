@@ -15,6 +15,10 @@ if (process.env.NODE_ENV === "production") {
 require("./routes/apiRoutes.js")(app);
 app.use(router);
 
+
+ 
+
+
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
