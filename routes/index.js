@@ -11,5 +11,3 @@ router.use((req, res) =>
 );
 
 module.exports = router;
-
-//ismum made a change
