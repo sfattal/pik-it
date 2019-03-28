@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import Container from '../components/Container';
+import React, {Component} from 'react'
+import Container from '../components/Container'
 import MultiStep from '../components/Form/multiStep'
 import { steps } from '../components/Form/Form'
 
