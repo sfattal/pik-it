@@ -12,11 +12,9 @@ import './pages.css'
 class Create extends Component {
   render() {
     return (
-      <div>
-        <Container>
-          <MultiStep steps={steps}/>
-        </Container>
-      </div>
+      <Container>
+        <MultiStep steps={steps}/>
+      </Container>
     )
   }
 }
