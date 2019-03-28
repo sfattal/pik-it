@@ -14,7 +14,7 @@ function Navbar() {
               to="/create"
               className={window.location.pathname === "/create" ? "nav-link active" : "nav-link"}
             >
-              Create pik-it
+              Create
             </Link>
           </li>
           <li className="nav-item">
@@ -22,7 +22,7 @@ function Navbar() {
               to="/edit"
               className={window.location.pathname === "/edit" ? "nav-link active" : "nav-link"}
             >
-              Edit pik-it
+              Edit
             </Link>
           </li>
         </ul>
