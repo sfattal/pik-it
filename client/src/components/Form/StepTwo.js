@@ -11,12 +11,38 @@ export class StepTwo extends React.Component {
     this.handleChoiceChanged = this.handleChoiceChanged.bind(this);
   }
 
-  addChoice = () => {
-    console.log("add choice has been hit")
-    var {choice, choices} = this.state;
-    const newChoices = [...choices, choice]
-    this.setState({ choices: newChoices, choice: "" })
+   emptyString(){
+    alert("please enter a string");
   }
+
+  
+
+    duplicateChoice = () => {
+      alert('you have entered a duplicate value, please re-enter another choice')
+
+    }
+
+  addChoice = () => {
+          var {choice, choices} = this.state;
+
+          if (choice === "") {
+            this.emptyString(); 
+          }
+          else if (choices.includes (choice)) { 
+            this.duplicateChoice();
+          }
+          else {
+          const newChoices = [...choices, choice]
+          this.setState({choices: newChoices, choice: ""})
+
+        }
+  }
+
+  
+
+  // deleteChoice = () => {
+  //     // function that removes the choice from the array
+  // }
 
   handleChoiceChanged (event) {
     this.setState({choice: event.target.value})
@@ -24,7 +50,8 @@ export class StepTwo extends React.Component {
 
   renderAddChoices() {
     return this.state.choices.map(choice => {
-      return <AddChoice poll={{description:choice}}/>
+      return <AddChoice choice={{name:choice}}/>
+      // deleteChoice={{this.deleteChoice}}
     })
   }
 
