@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/">
-        Choosey
+        pik-it
       </Link>
       <div>
         <ul className="navbar-nav">
@@ -14,7 +14,7 @@ function Navbar() {
               to="/create"
               className={window.location.pathname === "/create" ? "nav-link active" : "nav-link"}
             >
-              Create Choosey
+              Create pik-it
             </Link>
           </li>
           <li className="nav-item">
@@ -22,7 +22,7 @@ function Navbar() {
               to="/edit"
               className={window.location.pathname === "/edit" ? "nav-link active" : "nav-link"}
             >
-              Edit Choosey
+              Edit pik-it
             </Link>
           </li>
         </ul>
