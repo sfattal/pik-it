@@ -115,7 +115,7 @@ export default function MultiStep(props) {
           compState === 0 ? 
           <StepOne next={next} buttonState={{showNextBtn:buttonsState.showNextBtn}} sendPollData={sendPollData}/> :
           compState === 1 ?
-          <StepTwo /> : 
+          <StepTwo next={next} buttonState={{showNextBtn:buttonsState.showNextBtn}} sendPollData={sendPollData}/> : 
           <StepThree />
         }
         <div style={props.showNavigation ? {} : { display: 'none' }}>
