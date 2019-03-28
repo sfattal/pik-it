@@ -48,6 +48,12 @@ export class StepTwo extends React.Component {
           
           
         </div>
+        <button
+            style={this.props.buttonState.showNextBtn ? {} : { display: 'none' }}
+            onClick={() => this.props.next(this.state)}
+          >
+            Next
+          </button>
       </div>
     )
   }
