@@ -19,6 +19,10 @@ const getNavStyles = (indx, length) => {
   return styles
 }
 
+const pollData = {
+
+}
+
 const getButtonsState = (indx, length) => {
   if (indx > 0 && indx < length - 1) {
     return {
@@ -52,10 +56,13 @@ export default function MultiStep(props) {
     setButtons(getButtonsState(indx, props.steps.length))
   }
 
-  const next = () => {
-    // if (compState === 0) {
+  const next = (data) => {
+    // if ( === 0) {
     //   axios.post('/poll', {
-
+    console.log(pollData);
+    pollData.title = data.title;
+    pollData.desc = data.desc;
+    pollData.email = data.email;
     //   })
     //   .then(function (response) {
     //     console.log(response);
@@ -67,10 +74,10 @@ export default function MultiStep(props) {
     setStepState(compState + 1);
   }
   
-  const sendPollData = () => {
-
+  const sendPollData = (data) => {
+    // pollData[data]
   }
-
+  
   
   const previous = () => setStepState((compState > 0) ? compState - 1 : compState)
 
@@ -106,7 +113,7 @@ export default function MultiStep(props) {
         </ol>
         {
           compState === 0 ? 
-          <StepOne sendPollData={() => sendPollData()}/> :
+          <StepOne next={next} buttonState={{showNextBtn:buttonsState.showNextBtn}} sendPollData={sendPollData}/> :
           compState === 1 ?
           <StepTwo /> : 
           <StepThree />
@@ -119,12 +126,12 @@ export default function MultiStep(props) {
             Previous
           </button>
 
-          <button
+          {/* <button
             style={buttonsState.showNextBtn ? {} : { display: 'none' }}
             onClick={next}
           >
             Next
-          </button>
+          </button> */}
 
           <button
             style={buttonsState.showSubmitBtn ? {} : { display: 'none' }}

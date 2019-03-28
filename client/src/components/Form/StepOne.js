@@ -63,6 +63,12 @@ export class StepOne extends React.Component {
             autoFocus
           />
         </div>
+        <button
+            style={this.props.buttonState.showNextBtn ? {} : { display: 'none' }}
+            onClick={() => this.props.next(this.state)}
+          >
+            Next
+          </button>
       </div>
     )
   }
