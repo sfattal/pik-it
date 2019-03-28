@@ -1,7 +1,5 @@
 var db = require("../models");
-var router = require("express").Router
 var controller = require("../controllers/pollController.js")
-
 
 module.exports = function(app) {
   app.get("/api/polls", function(req, res) {
@@ -12,7 +10,7 @@ module.exports = function(app) {
       res.send(dbPolls);
     });
   });
-
+  
 //   app.get("/api/authors/:id", function(req, res) {
 //     db.Choice.findOne({
 //         where: {

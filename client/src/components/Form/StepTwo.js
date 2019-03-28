@@ -14,17 +14,24 @@ export class StepTwo extends React.Component {
   addChoice = () => {
     var {choice, choices} = this.state;
     const newChoices = [...choices, choice]
-    this.setState({ choices: newChoices, choice: "" })
+    this.setState({choices: newChoices, choice: ""})
   }
+
+  // deleteChoice = () => {
+  //     // function that removes the choice from the array
+  // }
 
   handleChoiceChanged (event) {
     this.setState({choice: event.target.value})
   }
+
   renderAddChoices() {
     return this.state.choices.map(choice => {
-      return <AddChoice poll={{description:choice}}/>
+      return <AddChoice choice={{name:choice}}/>
+      // deleteChoice={{this.deleteChoice}}
     })
   }
+
   render () {
     console.log(this.state.choices)
     return (
@@ -48,7 +55,15 @@ export class StepTwo extends React.Component {
           
           
         </div>
+        <button
+            style={this.props.buttonState.showNextBtn ? {} : { display: 'none' }}
+            onClick={() => this.props.next(this.state)}
+          >
+            Next
+          </button>
       </div>
     )
   }
 }
+
+export default StepTwo

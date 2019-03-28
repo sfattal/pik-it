@@ -17,8 +17,14 @@ export class StepThree extends React.Component {
   render () {
     return (
       <div>
-        <label>Choose a date and time to end this Choosey</label>
-        <Datetime/>
+        <div className='row'>
+          <div className='col-6'>
+            <label>Choose a date and time to end this pik-it</label>
+          </div>
+          <div className='col-6'>
+            <Datetime/>
+          </div>
+        </div>  
       </div>
   )
   }
