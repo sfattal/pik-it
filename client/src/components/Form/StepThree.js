@@ -17,7 +17,7 @@ export class StepThree extends React.Component {
   render () {
     return (
       <div>
-        <label>Choose a date and time to end this Choosey</label>
+        <label>Choose a date and time to end this pik-it</label>
         <Datetime/>
       </div>
   )
