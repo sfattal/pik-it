@@ -1,8 +1,8 @@
 const express = require("express")
 const app = express()
 const PORT = process.env.PORT || 3001
+const router = require("./routes/index.js")
 var db = require("./models")
-const router = "./routes/index.js"
 
 // Configure body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));
