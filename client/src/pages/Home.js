@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import Hero from '../components/Hero/index'
 import Container from '../components/Container/index'
+import Hero from '../components/Hero/index'
 import '../pages/pages.css'
 
 class Home extends Component {
