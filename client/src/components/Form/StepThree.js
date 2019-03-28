@@ -18,7 +18,7 @@ export class StepThree extends React.Component {
     return (
       <div>
         <label>Choose a date and time to end this Choosey</label>
-        <Datetime/>
+        <Datetime onChange={() => this.props.next(this.state)}/>
       </div>
   )
   }

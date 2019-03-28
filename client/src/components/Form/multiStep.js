@@ -63,6 +63,9 @@ export default function MultiStep(props) {
     pollData.title = data.title;
     pollData.desc = data.desc;
     pollData.email = data.email;
+    pollData.choices = data.choices;
+    pollData.expirationDate = data.date;
+    console.log(pollData);
     //   })
     //   .then(function (response) {
     //     console.log(response);
@@ -74,8 +77,10 @@ export default function MultiStep(props) {
     setStepState(compState + 1);
   }
   
-  const sendPollData = (data) => {
+  const submitPollData = (data) => {
     // pollData[data]
+    console.log("we are submitting this data: ");
+    console.log(pollData);
   }
   
   
@@ -113,10 +118,10 @@ export default function MultiStep(props) {
         </ol>
         {
           compState === 0 ? 
-          <StepOne next={next} buttonState={{showNextBtn:buttonsState.showNextBtn}} sendPollData={sendPollData}/> :
+          <StepOne next={next} buttonState={{showNextBtn:buttonsState.showNextBtn}}/> :
           compState === 1 ?
-          <StepTwo next={next} buttonState={{showNextBtn:buttonsState.showNextBtn}} sendPollData={sendPollData}/> : 
-          <StepThree />
+          <StepTwo next={next} buttonState={{showNextBtn:buttonsState.showNextBtn}}/> : 
+          <StepThree next={next} submitPollData={submitPollData}/>
         }
         <div style={props.showNavigation ? {} : { display: 'none' }}>
           <button

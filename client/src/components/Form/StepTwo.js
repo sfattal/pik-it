@@ -12,6 +12,7 @@ export class StepTwo extends React.Component {
   }
 
   addChoice = () => {
+    console.log("add choice has been hit")
     var {choice, choices} = this.state;
     const newChoices = [...choices, choice]
     this.setState({ choices: newChoices, choice: "" })
@@ -20,11 +21,13 @@ export class StepTwo extends React.Component {
   handleChoiceChanged (event) {
     this.setState({choice: event.target.value})
   }
+
   renderAddChoices() {
     return this.state.choices.map(choice => {
       return <AddChoice poll={{description:choice}}/>
     })
   }
+
   render () {
     console.log(this.state.choices)
     return (
