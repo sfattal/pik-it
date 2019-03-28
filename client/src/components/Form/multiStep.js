@@ -1,4 +1,9 @@
 import React, {useState} from 'react'
+import Axios from 'axios';
+
+import { StepOne } from './StepOne'
+import { StepTwo } from './StepTwo'
+import { StepThree } from './StepThree'
 
 const getNavStyles = (indx, length) => {
   let styles = []
@@ -47,7 +52,25 @@ export default function MultiStep(props) {
     setButtons(getButtonsState(indx, props.steps.length))
   }
 
-  const next = () => setStepState(compState + 1)
+  const next = () => {
+    // if (compState === 0) {
+    //   axios.post('/poll', {
+
+    //   })
+    //   .then(function (response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+    // }
+    setStepState(compState + 1);
+  }
+  
+  const sendPollData = () => {
+
+  }
+
   
   const previous = () => setStepState((compState > 0) ? compState - 1 : compState)
 
@@ -81,7 +104,13 @@ export default function MultiStep(props) {
         <ol className='progtrckr'>
           {renderSteps()}
         </ol>
-        {props.steps[compState].component}
+        {
+          compState === 0 ? 
+          <StepOne sendPollData={() => sendPollData()}/> :
+          compState === 1 ?
+          <StepTwo /> : 
+          <StepThree />
+        }
         <div style={props.showNavigation ? {} : { display: 'none' }}>
           <button
             style={buttonsState.showPreviousBtn ? {} : { display: 'none' }}
