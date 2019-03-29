@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home'
 import Create from './pages/Create'
 // import Edit from './pages/Edit'
+import ParticipantSelection from './pages/ParticipantSelection'
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/create" component={Create} />
           {/* <Route exact path="/edit" component={Edit} /> */}
+          <Route exact path="/test" component={ParticipantSelection} />
         </div>
       </Router>
     );
