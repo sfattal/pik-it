@@ -14,8 +14,9 @@ export class Form extends React.Component {
       choice: '',
       choices: [],
       date: new Date(),
-      page: 1
+      page: 1 // default form to step 1
     }
+    // Bind changes to state to this scope
     this.handleTitleChanged = this.handleTitleChanged.bind(this);
     this.handleDescChanged = this.handleDescChanged.bind(this);
     this.handleEmailChanged = this.handleEmailChanged.bind(this);
@@ -24,7 +25,7 @@ export class Form extends React.Component {
     this.handleDateChanged = this.handleDateChanged.bind(this);
   }
 
-  // Conditional Render Function -- evaluates which piece of state are empty/not empty to render each step
+  // Conditional Render Function - evaluates required fields to set page state (corresponding to form steps)
   setPage = () => {
     if (this.state.title === '' || this.state.email === '') {
       this.setState({page: 1})
@@ -37,6 +38,7 @@ export class Form extends React.Component {
     }
   }
 
+  // IF Function rendering each step of the form based on page state
   renderPage = () => {
     console.log(this.state.page)
     if (this.state.page === 1) {
@@ -82,7 +84,7 @@ export class Form extends React.Component {
     }
   }
 
-  // Step One Helper Function(s)
+  // Step One Function(s)
   handleTitleChanged (event) {
     this.setState({title: event.target.value})
   }
@@ -95,7 +97,7 @@ export class Form extends React.Component {
     this.setState({email: event.target.value})
   }
 
-  // Step Two Helper Function(s)
+  // Step Two Function(s)
   emptyString(){
     alert("please enter a string");
   }
@@ -137,15 +139,16 @@ export class Form extends React.Component {
     console.log(this.state)
     return this.state.choices.map(choice => {
       return <AddChoice choice={choice}/>
-      // deleteChoice={{this.deleteChoice}}
+      // deleteChoice={{this.deleteChoice}} PUT IN BUTTON & DECLARE PROP
     })
   }
 
-  // Step Three Helper Function(s)
+  // Step Three Function(s)
   handleDateChanged (event) {
     this.setState({date: event.target.value})
   }
 
+  // Call renderPage function in component render function
   render () {
     return (
       <div>
