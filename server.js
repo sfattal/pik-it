@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const PORT = process.env.PORT || 3001
+const router = require("./routes/index.js")
 var db = require("./models")
 
 // Configure body parsing for AJAX requests
@@ -8,10 +9,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/public"));
+  app.use(express.static("client/build"));
 }
 
 require("./routes/apiRoutes.js")(app);
+app.use(router);
+
+
+ 
+
 
 var syncOptions = { force: false };
 

@@ -1,38 +1,13 @@
 import React from 'react'
-import AddChoice from '../AddChoice'
+import AddChoice from './AddChoice'
 
-export class StepTwo extends React.Component {
-  constructor () {
-    super()
-    this.state = {
-      choice: "",
-      choices: []
-    }
-    this.handleChoiceChanged = this.handleChoiceChanged.bind(this);
-  }
 
-  addChoice = () => {
-    console.log("add choice has been hit")
-    var {choice, choices} = this.state;
-    const newChoices = [...choices, choice]
-    this.setState({ choices: newChoices, choice: "" })
-  }
-
-  handleChoiceChanged (event) {
-    this.setState({choice: event.target.value})
-  }
-
-  renderAddChoices() {
-    return this.state.choices.map(choice => {
-      return <AddChoice poll={{description:choice}}/>
-    })
-  }
-
-  render () {
-    console.log(this.state.choices)
+  function StepTwo(props) {
+    console.log(props)
     return (
       <div>
-        {this.renderAddChoices()}
+        {props.renderAddChoices()}
+        <AddChoice />
         <label>Choice</label>
         <div className='row'>
           <div className='col-11'>
@@ -40,26 +15,19 @@ export class StepTwo extends React.Component {
               className='u-full-width required userChoice'
               placeholder='Example Choice'
               type='text'
-              onChange={this.handleChoiceChanged}
-              value={this.state.choice}
+              onChange={props.handleChoiceChanged}
+              value={props.choice}
               autoFocus
             />
           </div>
           <div className='col-1'>
-            <button onClick={this.addChoice}>+</button>
+            <button onClick={props.addChoice}>+</button>
           </div>
-          
-          
+          <button onClick={props.setPage}>Next</button>
         </div>
-        <button
-            style={this.props.buttonState.showNextBtn ? {} : { display: 'none' }}
-            onClick={() => this.props.next(this.state)}
-          >
-            Next
-          </button>
       </div>
     )
   }
-}
+// }
 
 export default StepTwo
