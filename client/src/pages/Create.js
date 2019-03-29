@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import Container from '../components/Container'
-import MultiStep from '../components/Form/multiStep'
-import { steps } from '../components/Form/Form'
+import {Form} from '../components/Form/Form'
 
 import '../components/Form/css/custom.css'
 import '../components/Form/css/normalize.css'
@@ -13,7 +12,7 @@ class Create extends Component {
   render() {
     return (
       <Container>
-        <MultiStep steps={steps}/>
+        <Form />
       </Container>
     )
   }
