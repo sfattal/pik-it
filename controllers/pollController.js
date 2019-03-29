@@ -52,7 +52,7 @@ const db = require("../models");
 // Defining methods for the controller
 module.exports = {
   doAllTheWork: function(req, res) {
-      var poll_id = req.params.pollid
+    var poll_id = req.params.pollid
     db.Response.findAll({
         where: {
             poll_id: req.params.pollid
@@ -78,10 +78,15 @@ module.exports = {
           res.json(dbResult);
       })
   },
-  postToPoll: function(req, res) {
+  sendPollData: function(req, res) {
       console.log("posting to poll");
       db.Poll.Create({
-          
+          poll_name: pollData.title,
+          poll_key: pollData.key,
+          poll_description: pollData.description,
+          poll_expiration: pollData.expirationDate
+      }).then(function(dbResult) {
+              return dbResult.id
       })
   }
 }
