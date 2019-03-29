@@ -47,7 +47,7 @@ function StepOne(props) {
         </div>
         <div className='row'>
           <div className='col-12'>
-            <button onClick={props.setPage}>Next</button>
+            <button onClick={props.setPageNext}>Next</button>
           </div>
         </div>
       </div>
