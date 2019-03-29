@@ -28,6 +28,8 @@ module.exports = function(app) {
 
   app.get("/api/results/:pollid", controller.doAllTheWork)
 
-  app.post("/api/sendData", controller.sendPollData);
+  app.post("/api/sendPollData", controller.sendPollData);
+
+  app.post("/api/sendResponseData", controller.sendResponseData);
 
 }
