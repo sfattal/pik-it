@@ -122,9 +122,9 @@ export class Form extends React.Component {
     }
   }
 
-  // deleteChoice = () => {
-  //     // function that removes the choice from the array
-  // }
+  deleteChoice = () => {
+      console.log('delete choice')
+  }
 
   handleChoiceChanged (event) {
     this.setState({choice: event.target.value})
@@ -135,11 +135,9 @@ export class Form extends React.Component {
   }
 
   renderAddChoices = () => {
-    console.log("this is the renderAddChoices function")
     console.log(this.state)
     return this.state.choices.map(choice => {
-      return <AddChoice choice={choice}/>
-      // deleteChoice={{this.deleteChoice}} PUT IN BUTTON & DECLARE PROP
+      return <AddChoice choice={choice} deleteChoice={this.deleteChoice}/>
     })
   }
 
