@@ -78,10 +78,11 @@ module.exports = {
           res.json(dbResult);
       })
   },
-  postToPoll: function(req, res) {
-      console.log("posting to poll");
-      db.Poll.Create({
-          
-      })
+  getExistingKeys: function() {
+      db.Poll.findAll({
+        attributes: ['poll_key']
+      }).then(function(dbResult) {
+        return dbResult;
+    })
   }
 }
