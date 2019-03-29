@@ -26,9 +26,8 @@ function StepTwo(props) {
         </div>
         <div className='row'>
           <div className='col-12'>
-            <button>Back</button>
-            {/* onClick={props.setPageBack} PUT IN BUTTON & DECLARE PROP IN FORM.JS */}
-            <button onClick={props.setPage}>Next</button>
+            <button onClick={props.setPageBack}>Back</button>
+            <button onClick={props.setPageNext}>Next</button>
           </div>
         </div>
       </div>
