@@ -22,10 +22,10 @@ export class StepThree extends React.Component {
             <label>Choose a date and time to end this pik-it</label>
           </div>
           <div className='col-6'>
-            <Datetime/>
+            <Datetime onChange={() => this.props.next(this.state)}/>
           </div>
         </div>  
       </div>
-  )
+    )
   }
 }

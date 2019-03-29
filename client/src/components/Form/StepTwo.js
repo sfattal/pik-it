@@ -23,9 +23,6 @@ export class StepTwo extends React.Component {
     }
 
   addChoice = () => {
-    console.log(this.state.choice)
-  
-    
           var {choice, choices} = this.state;
 
           if (choice === "") {
@@ -39,7 +36,6 @@ export class StepTwo extends React.Component {
           this.setState({choices: newChoices, choice: ""})
 
         }
-     
   }
 
   
