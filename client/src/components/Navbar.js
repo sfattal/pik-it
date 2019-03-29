@@ -17,14 +17,14 @@ function Navbar() {
               Create
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link
               to="/edit"
               className={window.location.pathname === "/edit" ? "nav-link active" : "nav-link"}
             >
               Edit
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
