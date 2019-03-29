@@ -3,13 +3,18 @@ import React from 'react'
 function AllChoices(props) {
     return (
         <div className="allChoices">
-            <div className="row">
-                <div className="col-6" style={{display: !props.choice.name && "none"}}>
-                    <button onClick={props.sortChoice}>{props.choice.name}</button>
-                </div>
-            </div>         
+            { props.choices.map(choice => {
+                return (
+                    <div>
+                        <button>{choice}</button>
+                        {/* onClick={props.sortChoice} */}
+                    </div>
+                )
+            })}
         </div>
     )
 }
 
 export default AllChoices
+
+// GET from the db for each choice name and ID
