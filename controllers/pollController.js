@@ -78,6 +78,7 @@ module.exports = {
           res.json(dbResult);
       })
   },
+
     getExistingKeys: function() {
         db.Poll.findAll({
         attributes: ['poll_key']
