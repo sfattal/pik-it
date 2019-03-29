@@ -23,3 +23,5 @@ export class Link extends React.Component {
       )
       }
 }
+
+export default Link;

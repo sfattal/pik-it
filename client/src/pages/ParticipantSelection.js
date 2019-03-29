@@ -1,57 +1,44 @@
 import React, { Component } from 'react'
 import Container from '../components/Container'
-import Link from '../components/Dash/Link'
+// import Link from '../components/Dash/Link'
 import AllChoices from '../components/Dash/AllChoices'
 import ChoiceOrder from '../components/Dash/ChoiceOrder'
-import Voters from '../components/Dash/Voters'
+// import Voters from '../components/Dash/Voters'
 
-class ChoiceSelection extends Component {
+class ParticipantSelection extends Component {
     constructor () {
         super()
         this.state = {
-            allChoices: [],
+            allChoices: [1, 2, 3, 4, 5],
             userOrder: []
         }
-        this.handleUserOrderChanged = this.handleUserOrderChanged.bind(this);
-    }
-    
-    renderAllChoices() {
-        return this.state.allChoices.map(choices => {
-          return <AllChoices allChoices={{name:choices}} />
-        })
+        // this.handleUserOrderChanged = this.handleUserOrderChanged.bind(this);
     }
 
     sortChoice = () => {
-        // onClick function that moves the user's choice from the allChoices array to the userOrder array
+        // onClick function that moves the user's choice from the allChoices array to the userOrder array !!PASS AS PROP!!
     }
 
     removeChoice = () => {
-        // function that removes the user's choice from the userOrder array back to allChoices
-    }
-
-    renderUserOrder() {
-        return this.state.userOrder.map(order => {
-          return <ChoiceOrder userOrder={{name:order}} />
-            // removeChoice={{this.removeChoice}}
-        })
+        // onClick function that removes the user's choice from the userOrder array back to allChoices !!PASS AS PROP!!
     }
 
     render() {
         return (
             <Container>
                 <div class="row">
-                    <Link />
+                    {/* <Link /> */}
                 </div>
                 <div class="row">
-                    <AllChoices />
-                    <ChoiceOrder />
+                    <AllChoices choices={ this.state.allChoices } />
+                    <ChoiceOrder positions={ this.state.userOrder }/>
                 </div>
                 <div class="row">
-                    <Voters />
+                    {/* <Voters /> */}
                 </div>
             </Container>
         )
     }
 }
   
-export default ChoiceSelection;
+export default ParticipantSelection;
