@@ -14,7 +14,7 @@ class Home extends Component {
                      <div className="card-body">
                         <h5 className="card-title">Welcome to pik-it!</h5>
                         <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="/create" className="btn btn-primary">Create</a>
+                        <a href="/create" className="btn btn-outline-light btn-lg">Create</a>
                      </div>
                   </div>
                </Container>

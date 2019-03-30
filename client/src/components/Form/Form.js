@@ -3,6 +3,8 @@ import StepOne from './StepOne'
 import StepTwo from './StepTwo'
 import StepThree from './StepThree'
 import AddChoice from './AddChoice'
+import './style.css'
+
 const axios = require('axios')
 // axios.defaults.withCredentials = true;
 
