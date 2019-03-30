@@ -1,14 +1,15 @@
 import React from 'react'
 
 function AllChoices(props) {
+    console.log(props)
     return (
         <div className="allChoices">
-            { props.choices.map(choice => {
+            { props.choices.map((choice, index) => {
                 return (
-                    <div>
-                        <button onClick={props.sortChoice}>{choice}</button>
-                        {/* onClick={props.sortChoice} */}
-                    </div>
+                    <button 
+                    key={props.choices[index].id}
+                    choiceText={props.choices[index].choice_text}
+                    onClick={props.sortChoice}>{choice}</button>
                 )
             })}
         </div>

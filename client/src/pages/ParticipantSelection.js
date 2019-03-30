@@ -17,22 +17,23 @@ class ParticipantSelection extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://localhost:3001/api/polls/Xjdjs7753dD', JSON.stringify)
-        .then(json => console.log(json))
+        axios.get('http://localhost:3001/api/polls/Xjdjs7753dD')
+        // .then(json => console.log(json.data[0].Choices))
+        .then(json => {
+            this.setState({allChoices: json.data[0].Choices});
+            console.log('something')
+            console.log(this.state.allChoices);
+        } )
+        .then(response => {
+            this.renderAllChoices();
+        })
         .catch(function(error) {
             console.log(error);
-          });
-        // .then(json => json.data.results.map(result => (
-        //     {
-        //         name: `${result.name.first} ${result.name.last}`,
-        //         id: result.registered
-        //     })))
-            
-        //     .then(newData => this.setState({users: newData, store: newData}))
-        //     .catch(error => alert(error))
-        //     .catch(function(error) {
-        //         console.log(error);
-        //       });
+            });
+    }
+
+    renderAllChoices = (choice) => {
+        return <AllChoices choice={choice}/>
     }
 
     sortChoice = () => {
