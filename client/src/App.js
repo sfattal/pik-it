@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home'
 import Create from './pages/Create'
 // import Edit from './pages/Edit'
+import "./style.css"
 import ParticipantSelection from './pages/ParticipantSelection'
 import Results from './pages/Results'
 

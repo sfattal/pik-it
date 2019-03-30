@@ -6,6 +6,7 @@ import AllChoices from '../components/Dash/AllChoices'
 import ChoiceOrder from '../components/Dash/ChoiceOrder'
 // import Voters from '../components/Dash/Voters'
 
+
 class ParticipantSelection extends Component {
     constructor () {
         super()
@@ -47,24 +48,31 @@ class ParticipantSelection extends Component {
 
     render() {
         return (
+            <div className = "fluid-container justify-content-center"> 
             <Container>
-                <div className="row">
+                <h1 className ="text-light"> List your choices by click on the button</h1>
+                <div className="row pt-3">
                     {/* <Link /> */}
                 </div>
-                <div className="row">
+                < div className = "row justify-content-center" >
+                    <div className = "col-5">
                     <AllChoices 
                         choices={this.state.allChoices} 
                         sortChoice={this.sortChoice}
                     />
+                    </div>
+                    <div className="col-7">
                     <ChoiceOrder 
                         positions={this.state.userOrder}
                         removeChoice={this.state.removeChoice}
                     />
+                    </div>
                 </div>
                 <div className="row">
                     {/* <Voters /> */}
                 </div>
             </Container>
+            </div>
         )
     }
 }
