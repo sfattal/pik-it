@@ -4,6 +4,10 @@ import StepTwo from './StepTwo'
 import StepThree from './StepThree'
 import AddChoice from './AddChoice'
 import './style.css'
+
+const axios = require('axios')
+// axios.defaults.withCredentials = true;
+
 export class Form extends React.Component {
   constructor () {
     super()
@@ -85,6 +89,7 @@ export class Form extends React.Component {
           renderPage={this.renderPage}
           handleDateChanged={this.handleDateChanged}
           date={this.state.date}
+          submit={this.submit}
         />
       )
     }
@@ -151,6 +156,26 @@ export class Form extends React.Component {
   handleDateChanged (event) {
     this.setState({date: event.target.value})
     console.log(this.state)
+  }
+
+  submit = () => {
+
+    var headers = {
+      'Access-Control-Allow-Origin': '*',
+    }
+    axios.post("http://localhost:3001/api/sendPollData", JSON.stringify({
+      poll_name : this.state.title,
+      poll_key : "123",
+      poll_description: this.state.desc,
+      poll_expiration: this.state.date
+    }), {"headers": headers} )
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   }
 
   // Call renderPage function in component render function
