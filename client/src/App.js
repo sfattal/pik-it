@@ -17,7 +17,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/create" component={Create} />
           {/* <Route exact path="/edit" component={Edit} /> */}
-          <Route exact path="/test" component={ParticipantSelection} />
+          <Route exact path="/api/polls/:key" component={ParticipantSelection} />
           <Route exact path="/results" component={Results} />
         </div>
       </Router>

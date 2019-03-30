@@ -3,12 +3,10 @@ import StepOne from './StepOne'
 import StepTwo from './StepTwo'
 import StepThree from './StepThree'
 import AddChoice from './AddChoice'
-import shortlink from './addShortLink'
 import './style.css'
 
 
 const axios = require('axios')
-// axios.defaults.withCredentials = true;
 
 export class Form extends React.Component {
   constructor () {
@@ -30,6 +28,7 @@ export class Form extends React.Component {
     this.handleChoiceChanged = this.handleChoiceChanged.bind(this);
     this.handleChoicesChanged = this.handleChoicesChanged.bind(this);
     this.handleDateChanged = this.handleDateChanged.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   // Conditional Render Function - evaluates required fields to set page state (corresponding to form steps)
@@ -162,17 +161,22 @@ export class Form extends React.Component {
   }
 
   submit = () => {
+    let that = this
+    function shortlink () { 
+      var shortlink = require('shortlink');
+      let randVar = shortlink.generate(8); // Random string of 8 characters, e.g. 'PJWn4T42' 
+      return randVar
+    }
+    
     console.log(this.state);
     
-    // var pollKey = shortlink();
-    // console.log("pollkey: " + pollKey);
-    // this.setState({ key: pollKey})
-    
+    var pollKey = shortlink();
+    console.log("pollkey: " + pollKey);
+    this.setState({key: pollKey})
 
-    
     axios.post("http://localhost:3001/api/sendPollData", {
       title: this.state.title,
-      key : this.state.key,
+      key : pollKey,
       description : this.state.desc,
       expiration: this.state.date,
       choices: this.state.choices
@@ -182,7 +186,7 @@ export class Form extends React.Component {
       "Access-Control-Allow-Origin": "*"
     }})
     .then(function (response) {
-      console.log("response: " + response);
+      window.location.replace(`/api/polls/${pollKey}`);
     })
     .catch(function (error) {
       console.log(error);

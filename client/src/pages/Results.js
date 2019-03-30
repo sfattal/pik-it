@@ -10,7 +10,6 @@ class Results extends Component {
             // pending: 
             // result: 
         }
-        // this.handleUserOrderChanged = this.handleUserOrderChanged.bind(this);
     }
 
     render() {

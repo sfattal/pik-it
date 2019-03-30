@@ -13,16 +13,13 @@ class ParticipantSelection extends Component {
             allChoices: [],
             userOrder: []
         }
-        // this.handleUserOrderChanged = this.handleUserOrderChanged.bind(this);
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/api/polls/Xjdjs7753dD')
-        // .then(json => console.log(json.data[0].Choices))
+        console.log(this.props)
+        axios.get('http://localhost:3001' + this.props.match.url)
         .then(json => {
             this.setState({allChoices: json.data[0].Choices});
-            console.log('something')
-            console.log(this.state.allChoices);
         } )
         .then(response => {
             this.renderAllChoices();
@@ -36,9 +33,12 @@ class ParticipantSelection extends Component {
         return <AllChoices choice={choice}/>
     }
 
-    sortChoice = () => {
-        console.log('sorted')
-        // onClick function that moves the user's choice from the allChoices array to the userOrder array !!PASS AS PROP!!
+    sortChoice = ({currentTarget}) => {
+        console.log(currentTarget.value)
+        const choice = currentTarget.value
+        console.log(this.state.userOrder)
+        this.setState({userOrder: [...this.state.userOrder, choice]}, ()=> console.log(this.state.userOrder))
+        
     }
 
     removeChoice = () => {
@@ -53,9 +53,8 @@ class ParticipantSelection extends Component {
                 </div>
                 <div className="row">
                     <AllChoices 
-                        // key={index}
                         choices={this.state.allChoices} 
-                        sortChoice={this.state.sortChoice}
+                        sortChoice={this.sortChoice}
                     />
                     <ChoiceOrder 
                         positions={this.state.userOrder}
