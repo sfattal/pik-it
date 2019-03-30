@@ -7,7 +7,6 @@
     "npm": "6.9.0"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
     "concurrently": "^4.1.0",
     "jquery": "^3.3.1",
     "react": "^16.8.4",
@@ -16,6 +15,7 @@
     "react-dom": "^16.8.4",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "spectre.css": "^0.5.8",
     "typescript": "^3.3.3333"
   },
   "scripts": {
