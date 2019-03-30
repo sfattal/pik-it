@@ -3,7 +3,7 @@ import React from 'react'
 function StepTwo(props) {
   console.log(props) //REMOVE
   return (
-    < div className = "fluid-container justify-content-center border-rounded" >
+    < div className = "fluid-container justify-content-center border-rounded pt-5" >
       <h3 className ="text-light"> Please enter poll choices here</h3>
       <div className="pt-3">
               < div className = "row justify-content-center flex-row" >
