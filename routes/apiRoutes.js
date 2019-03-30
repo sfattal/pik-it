@@ -17,7 +17,11 @@ module.exports = function(app) {
 
   app.get("/api/results/:pollid", controller.doAllTheWork)
 
-  app.post("/api/sendPollData", controller.sendPollData);
+  app.post("http://localhost:3001/api/sendPollData", controller.sendPollData);
+
+  // app.post("/api/sendPollData", function(req, res) {
+  //   console.log(req)
+  // });
 
   app.post("/api/sendResponseData", controller.sendResponseData);
 

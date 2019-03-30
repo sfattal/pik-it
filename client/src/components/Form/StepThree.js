@@ -20,8 +20,7 @@ function StepThree(props) {
       <div className='row'>
           <div className='col-12'>
             <button onClick={props.setPageBack}>Back</button>
-            <button>Submit</button>
-            {/* onClick={props.submit} PUT IN BUTTON & DECLARE PROP IN FORM.JS */}
+            <button onClick={props.submit}>Submit</button>
           </div>
         </div>
     </div>
