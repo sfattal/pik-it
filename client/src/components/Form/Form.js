@@ -28,7 +28,7 @@ export class Form extends React.Component {
   }
 
   // Conditional Render Function - evaluates required fields to set page state (corresponding to form steps)
-  setPage = () => {
+  setPageNext = () => {
     if (this.state.title === '' || this.state.email === '') {
       this.setState({page: 1})
     }
@@ -40,13 +40,17 @@ export class Form extends React.Component {
     }
   }
 
+  setPageBack = () => {
+    this.setState({page: this.state.page - 1})
+  }
+
   // IF Function rendering each step of the form based on page state
   renderPage = () => {
     console.log(this.state.page)
     if (this.state.page === 1) {
       return(
         <StepOne 
-          setPage={this.setPage}
+          setPageNext={this.setPageNext}
           renderPage={this.renderPage}
           handleTitleChanged={this.handleTitleChanged} 
           handleDescChanged={this.handleDescChanged} 
@@ -61,7 +65,8 @@ export class Form extends React.Component {
     else if (this.state.page === 2) {
       return(
         <StepTwo 
-          setPage={this.setPage}
+          setPageNext={this.setPageNext}
+          setPageBack={this.setPageBack}
           renderPage={this.renderPage}
           choice={this.state.choice}
           choices={this.state.choices}
@@ -77,7 +82,8 @@ export class Form extends React.Component {
     else if (this.state.page === 3) {
       return( 
         <StepThree 
-          setPage={this.setPage}
+          setPageNext={this.setPageNext}
+          setPageBack={this.setPageBack}
           renderPage={this.renderPage}
           handleDateChanged={this.handleDateChanged}
           date={this.state.date}
@@ -147,6 +153,7 @@ export class Form extends React.Component {
   // Step Three Function(s)
   handleDateChanged (event) {
     this.setState({date: event.target.value})
+    console.log(this.state)
   }
 
   submit = () => {
