@@ -5,7 +5,7 @@ function StepOne(props) {
     return (
       <div className = "fluid-container justify-content-center border-rounded" >
         <div className='row justify-content-center d-flex'>
-                    <h4 className ="text-light"> Title</h4>
+                    <h4 className ="text-light">Title</h4>
           <div className='col-12 pb-3 justify-content-center d-flex'>
               <div class="form-group col-6 justify-content-center">
                 <input  id ="title" type="text" className="form-control" id="title" placeholder="title"   onChange={props.handleTitleChanged}
@@ -18,17 +18,17 @@ function StepOne(props) {
               <h4 className ="text-light"> Description</h4>
           <div className = 'col-12 pb-3 justify-content-center d-flex'>
               <div class="form-group col-6 justify-content-center">
-                  <input id ="desc" type="text" className="form-control" id="title" placeholder="description" 
+                  <input id ="desc" type="text" className="form-control" id="title" placeholder="optional" 
                   onChange={props.handleDescChanged}
                   value={props.desc}/>
                 </div>
             </div>
         </div>
           <div className='row justify-content-center d-flex'>
-                <h4 className ="text-light"> Label</h4>
+                <h4 className ="text-light"> Email</h4>
                 <div className = 'col-12 pb-3 justify-content-center d-flex' >
                     <div class="form-group col-6 justify-content-center">
-                          <input id="email" type="text" className="form-control" id="title" placeholder="title" onChange={props.handleEmailChanged}
+                          <input id="email" type="text" className="form-control" id="title" placeholder="email@email.com" onChange={props.handleEmailChanged}
                     value={props.email}
                     autoFocus />
                     </div>
