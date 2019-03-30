@@ -3,7 +3,7 @@ import StepOne from './StepOne'
 import StepTwo from './StepTwo'
 import StepThree from './StepThree'
 import AddChoice from './AddChoice'
-
+import './style.css'
 export class Form extends React.Component {
   constructor () {
     super()

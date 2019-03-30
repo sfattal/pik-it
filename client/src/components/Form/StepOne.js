@@ -3,9 +3,9 @@ import React from 'react'
 function StepOne(props) {
   console.log(props) //REMOVE
     return (
-      <div className = "fluid-container justify-content-center" >
+      <div className = "fluid-container justify-content-center border-rounded" >
         <div className='row justify-content-center d-flex'>
-                    <h4> Title</h4>
+                    <h4 className ="text-light"> Title</h4>
           <div className='col-12 pb-3 justify-content-center d-flex'>
               <div class="form-group col-6 justify-content-center">
                 <input  id ="title" type="text" className="form-control" id="title" placeholder="title"   onChange={props.handleTitleChanged}
@@ -15,7 +15,7 @@ function StepOne(props) {
           </div>
         </div>
         <div className='row justify-content-center d-flex'>
-              <h4> Description</h4>
+              <h4 className ="text-light"> Description</h4>
           <div className = 'col-12 pb-3 justify-content-center d-flex'>
               <div class="form-group col-6 justify-content-center">
                   <input id ="desc" type="text" className="form-control" id="title" placeholder="description" 
@@ -25,7 +25,7 @@ function StepOne(props) {
             </div>
         </div>
           <div className='row justify-content-center d-flex'>
-                <h4> Label</h4>
+                <h4 className ="text-light"> Label</h4>
                 <div className = 'col-12 pb-3 justify-content-center d-flex' >
                     <div class="form-group col-6 justify-content-center">
                           <input id="email" type="text" className="form-control" id="title" placeholder="title" onChange={props.handleEmailChanged}
@@ -37,7 +37,7 @@ function StepOne(props) {
         
           <div className='row'>
             <div className='col-12'>
-              <button onClick={props.setPageNext} class="btn btn-primary">Next</button>
+              <button onClick={props.setPageNext} class="btn btn-outline-light btn-lg">Next</button>
             </div>
           </div>
         </div> 
