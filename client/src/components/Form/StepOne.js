@@ -5,10 +5,10 @@ function StepOne(props) {
     return (
       <div className = "fluid-container justify-content-center border-rounded" >
         <div className='row justify-content-center d-flex'>
-                    <h4 className ="text-light"> Title</h4>
+                    <h4 className ="text-light">Title</h4>
           <div className='col-12 pb-3 justify-content-center d-flex'>
               <div className="form-group col-6 justify-content-center">
-                <input  id ="title" type="text" className="form-control" placeholder="title"   onChange={props.handleTitleChanged}
+                <input  id ="title" type="text" className="form-control" placeholder="required"   onChange={props.handleTitleChanged}
               value={props.title}
               autoFocus/>
                </div>
@@ -17,18 +17,18 @@ function StepOne(props) {
         <div className='row justify-content-center d-flex'>
               <h4 className ="text-light"> Description</h4>
           <div className = 'col-12 pb-3 justify-content-center d-flex'>
-              <div className="form-group col-6 justify-content-center">
-                  <input id ="desc" type="text" className="form-control" placeholder="description" 
+              <div class="form-group col-6 justify-content-center">
+                  <input id ="desc" type="text" className="form-control" placeholder="optional" 
                   onChange={props.handleDescChanged}
                   value={props.desc}/>
                 </div>
             </div>
         </div>
           <div className='row justify-content-center d-flex'>
-                <h4 className ="text-light"> Label</h4>
+                <h4 className ="text-light"> Email</h4>
                 <div className = 'col-12 pb-3 justify-content-center d-flex' >
-                    <div className="form-group col-6 justify-content-center">
-                          <input id="email" type="text" className="form-control" placeholder="title" onChange={props.handleEmailChanged}
+                    <div class="form-group col-6 justify-content-center">
+                          <input id="email" type="text" className="form-control" placeholder="required" onChange={props.handleEmailChanged}
                     value={props.email}
                     autoFocus />
                     </div>
