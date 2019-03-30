@@ -3,7 +3,9 @@ import StepOne from './StepOne'
 import StepTwo from './StepTwo'
 import StepThree from './StepThree'
 import AddChoice from './AddChoice'
+import shortlink from './addShortLink'
 import './style.css'
+
 
 const axios = require('axios')
 // axios.defaults.withCredentials = true;
@@ -14,6 +16,7 @@ export class Form extends React.Component {
     this.state = { 
       title: '', 
       desc: '',
+      key: '',
       email: '',
       choice: '',
       choices: [],
@@ -159,18 +162,27 @@ export class Form extends React.Component {
   }
 
   submit = () => {
+    console.log(this.state);
+    
+    // var pollKey = shortlink();
+    // console.log("pollkey: " + pollKey);
+    // this.setState({ key: pollKey})
+    
 
-    var headers = {
-      'Access-Control-Allow-Origin': '*',
-    }
-    axios.post("http://localhost:3001/api/sendPollData", JSON.stringify({
-      poll_name : this.state.title,
-      poll_key : "123",
-      poll_description: this.state.desc,
-      poll_expiration: this.state.date
-    }), {"headers": headers} )
+    
+    axios.post("http://localhost:3001/api/sendPollData", {
+      title: this.state.title,
+      key : this.state.key,
+      description : this.state.desc,
+      expiration: this.state.date,
+      choices: this.state.choices
+    }, {"headers": {
+      "Content-Type": "application/json",
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": "*"
+    }})
     .then(function (response) {
-      console.log(response);
+      console.log("response: " + response);
     })
     .catch(function (error) {
       console.log(error);

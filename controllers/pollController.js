@@ -65,7 +65,7 @@ module.exports = {
         res.json(dbResult)
     })
   },
-  getPollChoices: function(req, res) {
+    getPollChoices: function(req, res) {
       console.log("getting choices...")
       var poll_key = req.params.pollkey
       db.Poll.findAll({
@@ -86,26 +86,28 @@ module.exports = {
         return dbResult;
     })
     },
-  sendPollData: function(req, res) {
+    sendChoiceData: function(req, res, id) {
+        console.log(req.body)
+        req.body.choices.forEach(choice => {
+          db.Choice.create({
+              poll_id: id,
+              choice_text: choice
+          })
+        })
+        .then(function(dbResult) {
+            res.send(dbResult.poll_id)
+        })
+    },
+    sendPollData: function(req, res) {
       console.log("posting to poll");
-      db.Poll.Create({
+      db.Poll.create({
           poll_name: req.body.title,
           poll_key: req.body.key,
           poll_description: req.body.description,
-          poll_expiration: req.body.expirationDate
+          poll_expiration: req.body.expiration
       }).then(function(dbResult) {
-            sendChoiceData(req, res, pollData, dbResult.id)
+            module.exports.sendChoiceData(req, res, dbResult.id)
             
-      })
-  },
-  sendChoiceData: function(req, res, pollData, id) {
-      pollData.choices.forEach(choice => {
-        db.Choice.Create({
-            poll_id: id,
-            choice_text: choice
-        })
-      }).then(function(dbResult) {
-          res.send(dbResult.poll_id)
       })
   },
   sendResponseData: function(req, res, responseData, id) {
