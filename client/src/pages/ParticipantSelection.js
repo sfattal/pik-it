@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import Container from '../components/Container'
 // import Link from '../components/Dash/Link'
 import AllChoices from '../components/Dash/AllChoices'
@@ -9,13 +10,33 @@ class ParticipantSelection extends Component {
     constructor () {
         super()
         this.state = {
-            allChoices: [1, 2, 3, 4, 5],
+            allChoices: [],
             userOrder: []
         }
         // this.handleUserOrderChanged = this.handleUserOrderChanged.bind(this);
     }
 
+    componentDidMount() {
+        axios.get('https://localhost:3001/api/polls/Xjdjs7753dD', JSON.stringify)
+        .then(json => console.log(json))
+        .catch(function(error) {
+            console.log(error);
+          });
+        // .then(json => json.data.results.map(result => (
+        //     {
+        //         name: `${result.name.first} ${result.name.last}`,
+        //         id: result.registered
+        //     })))
+            
+        //     .then(newData => this.setState({users: newData, store: newData}))
+        //     .catch(error => alert(error))
+        //     .catch(function(error) {
+        //         console.log(error);
+        //       });
+    }
+
     sortChoice = () => {
+        console.log('sorted')
         // onClick function that moves the user's choice from the allChoices array to the userOrder array !!PASS AS PROP!!
     }
 
@@ -26,14 +47,21 @@ class ParticipantSelection extends Component {
     render() {
         return (
             <Container>
-                <div class="row">
+                <div className="row">
                     {/* <Link /> */}
                 </div>
-                <div class="row">
-                    <AllChoices choices={ this.state.allChoices } />
-                    <ChoiceOrder positions={ this.state.userOrder }/>
+                <div className="row">
+                    <AllChoices 
+                        // key={index}
+                        choices={this.state.allChoices} 
+                        sortChoice={this.state.sortChoice}
+                    />
+                    <ChoiceOrder 
+                        positions={this.state.userOrder}
+                        removeChoice={this.state.removeChoice}
+                    />
                 </div>
-                <div class="row">
+                <div className="row">
                     {/* <Voters /> */}
                 </div>
             </Container>
