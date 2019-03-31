@@ -175,8 +175,9 @@ export class Form extends React.Component {
     this.setState({key: pollKey})
 
     // var url = process.env.URL || 'http://localhost:3001'
-    // `${url}/api/sendPollData`,
-    axios.post('https://pik-it.herokuapp.com/api/sendPollData', {
+    // `${url}/api/sendPollData`
+
+    axios.post('http://pik-it.herokuapp.com:3001/api/sendPollData', {
       title: this.state.title,
       key : pollKey,
       description : this.state.desc,
@@ -185,7 +186,7 @@ export class Form extends React.Component {
     }, {"headers": {
       "Content-Type": "application/json",
       "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "* "
     }})
     .then(function (response) {
       window.location.replace(`/api/polls/${pollKey}`);
