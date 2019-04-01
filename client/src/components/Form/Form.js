@@ -177,7 +177,7 @@ export class Form extends React.Component {
     // var url = process.env.URL || 'http://localhost:3001'
     // `${url}/api/sendPollData`
 
-    axios.post('https://pik-it.herokuapp.com:3001/api/sendPollData', {
+    axios.post('http://localhost:3001/api/sendPollData', {
       title: this.state.title,
       key : pollKey,
       description : this.state.desc,
