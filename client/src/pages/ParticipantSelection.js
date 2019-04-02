@@ -55,7 +55,7 @@ class ParticipantSelection extends Component {
 
     render() {
         return (
-            <div className ="fluid-container justify-content-center"> 
+            <div className ="fluid-container justify-content-center pt-3"> 
                 <Container>
                     < div className = "border-rounded pt-2 p-3 rounded shadow bg-white" >
                     <br></br>
