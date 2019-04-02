@@ -12,6 +12,7 @@ function AllChoices(props) {
                         <button 
                             className ="btn btn-outline-primary"
                             key={choice.id}
+                            pollkey={choice.pollID}
                             value={choice.choice_text}
                             choicetext={choice.choice_text}
                             onClick={props.sortChoice}>

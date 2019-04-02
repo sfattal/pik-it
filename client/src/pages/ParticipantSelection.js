@@ -14,7 +14,8 @@ class ParticipantSelection extends Component {
         this.state = {
             allChoices: [],
             userOrder: [],
-            participantName: ''
+            participantName: '',
+            pollID: ''
         }
         this.handleNameChanged = this.handleNameChanged.bind(this);
     }
@@ -24,7 +25,7 @@ class ParticipantSelection extends Component {
       }
 
     componentDidMount() {
-        console.log(this.props)
+        // console.log(this.props)
         axios.get('http://localhost:3001' + this.props.match.url)
         .then(json => {
             this.setState({allChoices: json.data[0].Choices});
@@ -42,9 +43,9 @@ class ParticipantSelection extends Component {
     }
 
     sortChoice = ({currentTarget}) => {
-        console.log(currentTarget.value)
+        // console.log(currentTarget.value)
         const choice = currentTarget.value
-        console.log(this.state.userOrder)
+        // console.log(this.state.userOrder)
         this.setState({userOrder: [...this.state.userOrder, choice]}, ()=> console.log(this.state.userOrder))
         
     }
@@ -60,13 +61,18 @@ class ParticipantSelection extends Component {
                     < div className = "border-rounded pt-2 p-3 rounded shadow bg-white" >
                     <br></br>
                     <div className="row justify-content-left p-3">
-                        <Name />
+                        <Name 
+                            participantName={this.state.participantName}
+                            handleNameChanged={this.state.handleNameChanged}
+                        />
                     </div>
                     < div className ="row justify-content-center">
                         <div className = "col-5">
                         <AllChoices 
                             choices={this.state.allChoices} 
                             sortChoice={this.sortChoice}
+                            positions={this.state.userOrder}
+                            removeChoice={this.state.removeChoice}
                         />
                         </div>
                         <div className="col-7">
