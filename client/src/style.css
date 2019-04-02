@@ -1,7 +1,19 @@
 body {
-    background: url("https://images.unsplash.com/photo-1508796079212-a4b83cbf734d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
-    height: 90vh;
-    background-size: cover;
-    background-position: center;
+    font-family: 'font';
+}
+
+#back {
+    color: rgb(79, 148, 226);
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+    transition-timing-function: ease-in-out;
     position: relative;
+}
+
+@font-face {
+    font-family: 'font';
+    src: url('../src/product-sans/Product\ Sans\ Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }

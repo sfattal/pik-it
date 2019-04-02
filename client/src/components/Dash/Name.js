@@ -5,7 +5,7 @@ function Name(props) {
     return (
         <div className = "fluid-container justify-content-center border-rounded" >
             <div className='row justify-content-center d-flex'>
-                <h4 className ="text-light">Name</h4>
+                <h4 className ="">Name</h4>
                 <div className="form-group col-6 justify-content-center">
                 <input  
                     id ="name" 
