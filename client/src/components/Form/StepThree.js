@@ -21,8 +21,8 @@ function StepThree(props) {
       </div>  
       <div className='row'>
           <div className='col-12'>
-            <button class="btn btn-outline-light btn-lg p-2" onClick={props.setPageBack}>Back</button>
-            <button class="btn btn-outline-light btn-lg p-2" onClick={props.submit}>Submit</button>
+            <button className="btn btn-outline-light btn-lg p-2" onClick={props.setPageBack}>Back</button>
+            <button className="btn btn-outline-light btn-lg p-2" onClick={props.submit}>Submit</button>
           </div>
         </div>
     </div>

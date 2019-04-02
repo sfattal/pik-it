@@ -112,11 +112,11 @@ export class Form extends React.Component {
 
   // Step Two Function(s)
   emptyString(){
-    alert("please enter a string");
+    alert("please enter a choice!");
   }
 
   duplicateChoice = () => {
-    alert('you have entered a duplicate value, please re-enter another choice')
+    alert("you have entered a duplicate choice, please re-enter a different choice")
 
   }
 
@@ -161,7 +161,7 @@ export class Form extends React.Component {
   }
 
   submit = () => {
-    let that = this
+    // let that = this
     function shortlink () { 
       var shortlink = require('shortlink');
       let randVar = shortlink.generate(8); // Random string of 8 characters, e.g. 'PJWn4T42' 
