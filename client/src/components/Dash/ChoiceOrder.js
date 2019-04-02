@@ -5,7 +5,7 @@ function ChoiceOrder(props) {
     return (
         <div>
             <div className="row justify-content-center">
-                <h4 className ="text-light">Ranking - remove choices to reorder them</h4>
+                <h4 className ="">Remove choices to reorder them</h4>
             </div>
             <ol className="choiceOrder fluid-container">
                 {props.positions.map(position => {

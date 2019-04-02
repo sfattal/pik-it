@@ -3,9 +3,9 @@ import React from 'react'
 function StepOne(props) {
   console.log(props) //REMOVE
     return (
-      <div className = "fluid-container justify-content-center border-rounded" >
+      <div className = "fluid-container justify-content-center pt-4 p-3 rounded shadow bg-white" >
         <div className='row justify-content-center d-flex'>
-                    <h4 className ="text-light">Title</h4>
+                    <h4>Title</h4>
           <div className='col-12 pb-3 justify-content-center d-flex'>
               <div className="form-group col-6 justify-content-center">
               <input  id ="title" type="text" className="form-control" placeholder="required"   onChange={props.handleTitleChanged}
@@ -15,7 +15,7 @@ function StepOne(props) {
           </div>
         </div>
         <div className='row justify-content-center d-flex'>
-              <h4 className ="text-light"> Description</h4>
+              <h4> Description</h4>
           <div className = 'col-12 pb-3 justify-content-center d-flex'>
               <div class="form-group col-6 justify-content-center">
                   <input id ="desc" type="text" className="form-control" placeholder="optional"
@@ -25,7 +25,7 @@ function StepOne(props) {
             </div>
         </div>
           <div className='row justify-content-center d-flex'>
-                <h4 className ="text-light"> Email</h4>
+                <h4> Email</h4>
                 <div className = 'col-12 pb-3 justify-content-center d-flex' >
                     <div class="form-group col-6 justify-content-center">
                     <input id="email" type="text" className="form-control" placeholder="required" onChange={props.handleEmailChanged}
@@ -37,7 +37,7 @@ function StepOne(props) {
         
           <div className='row'>
             <div className='col-12'>
-              <button onClick={props.setPageNext} className="btn btn-outline-light btn-lg">Next</button>
+              <button onClick={props.setPageNext} className="btn btn-outline-dark btn-lg">Next</button>
             </div>
           </div>
         </div> 

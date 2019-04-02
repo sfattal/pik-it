@@ -4,9 +4,9 @@ function AllChoices(props) {
     console.log(props)
     return (
         <div className="allChoices">
-            <h4 className ="text-light">Click each choice to rank them</h4>
-            {props.choices.map((choice) => {
-                // console.log(choice)
+            <h4 className ="">Click each choice to rank them</h4>
+            { props.choices.map((choice) => {
+                console.log(choice)
                 return (
                     <div className = "row justify-content-center pt-3">
                         <button 

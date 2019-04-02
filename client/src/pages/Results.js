@@ -15,7 +15,7 @@ class Results extends Component {
     render() {
         return (
             <div>
-            <Hero backgroundImage = "https://images.unsplash.com/photo-1508796079212-a4b83cbf734d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80">
+            <Hero>
                <Container>
                 {/* {this.renderResultsPage()} */}
                </Container>
