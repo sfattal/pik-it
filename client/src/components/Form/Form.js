@@ -174,10 +174,10 @@ export class Form extends React.Component {
     console.log("pollkey: " + pollKey);
     this.setState({key: pollKey})
 
-    // var url = process.env.URL || 'http://localhost:3001'
-    // `${url}/api/sendPollData`
+    var url = process.env.URL || 'http://localhost:3001'
+    
 
-    axios.post('http://localhost:3001/api/sendPollData', {
+    axios.post(`${url}/api/sendPollData`, {
       title: this.state.title,
       key : pollKey,
       description : this.state.desc,
