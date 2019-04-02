@@ -3,10 +3,10 @@ import React from 'react'
 function Name(props) {
     console.log(props)
     return (
-        <div className = "fluid-container justify-content-center border-rounded" >
-            <div className='row justify-content-center d-flex'>
+        <div className = "fluid-container justify-content-center border-rounded col 8" >
+            <div className='justify-content-center d-flex'>
                 <h4 className ="">Name</h4>
-                <div className="form-group col-6 justify-content-center">
+                <div className="col-6 justify-content-left">
                 <input  
                     id ="name" 
                     type="text" 

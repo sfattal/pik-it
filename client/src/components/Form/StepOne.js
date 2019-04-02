@@ -3,7 +3,7 @@ import React from 'react'
 function StepOne(props) {
   console.log(props) //REMOVE
     return (
-      <div className = "fluid-container justify-content-center border-rounded pt-4" >
+      <div className = "fluid-container justify-content-center pt-4 p-3 rounded shadow bg-white" >
         <div className='row justify-content-center d-flex'>
                     <h4>Title</h4>
           <div className='col-12 pb-3 justify-content-center d-flex'>

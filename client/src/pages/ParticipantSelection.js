@@ -57,11 +57,9 @@ class ParticipantSelection extends Component {
         return (
             <div className ="fluid-container justify-content-center"> 
                 <Container>
-                    <div className="row justify-content-center">
-                        <Link />
-                    </div>
+                    < div className = "border-rounded pt-2 p-3 rounded shadow bg-white" >
                     <br></br>
-                    <div className="row justify-content-center">
+                    <div className="row justify-content-left p-3">
                         <Name />
                     </div>
                     < div className ="row justify-content-center">
@@ -78,13 +76,18 @@ class ParticipantSelection extends Component {
                         />
                         </div>
                     </div>
+                    <div className="row justify-content-center p-3">
+                        <Link />
+                    </div>
                     <div className="row">
                         {/* <Voters /> */}
                     </div>
                     <div className="row justify-content-center">
-                        <button className="btn btn-outline-light btn-lg p-2" onClick={''}>Submit</button>
+                        <button className="btn btn-outline-dark btn-lg p-2" onClick={''}>Submit</button>
+                    </div>
                     </div>
                 </Container>
+
             </div>
         )
     }
