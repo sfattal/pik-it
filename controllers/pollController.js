@@ -92,7 +92,6 @@ module.exports = {
         }, 1000)
     },
     sendPollData: function(req, res) {
-        res.status(200).send("it works")
       console.log("posting to poll");
       db.Poll.create({
           poll_name: req.body.title,
