@@ -100,6 +100,7 @@ export class Form extends React.Component {
   // Step One Function(s)
   handleTitleChanged (event) {
     this.setState({title: event.target.value})
+    console.log(process.env)
   }
 
   handleDescChanged (event) {
