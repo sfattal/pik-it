@@ -4,8 +4,8 @@ import Datetime from 'react-datetime'
 function StepThree(props) {
   console.log(props) //REMOVE
   return (
-    <div className="fluid-container">
-      <div className='row text-center justify-content-center'>
+    < div className = "fluid-container p-3 rounded shadow bg-white" >
+      <div className='row text-center justify-content-center '>
         <div className='col-12'>
           <h2 className =""> Choose a date and time to send this pik-it </h2>
         </div>

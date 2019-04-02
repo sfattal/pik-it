@@ -201,7 +201,7 @@ export class Form extends React.Component {
   // Call renderPage function in component render function
   render () {
     return (
-      <div>
+      <div className ="pt-3">
         {this.renderPage()}
       </div>
     )
