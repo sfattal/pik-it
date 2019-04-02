@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Container from '../components/Container'
-// import Link from '../components/Dash/Link'
+import Name from '../components/Dash/Name';
+import Link from '../components/Dash/Link'
 import AllChoices from '../components/Dash/AllChoices'
 import ChoiceOrder from '../components/Dash/ChoiceOrder'
 // import Voters from '../components/Dash/Voters'
@@ -12,9 +13,15 @@ class ParticipantSelection extends Component {
         super()
         this.state = {
             allChoices: [],
-            userOrder: []
+            userOrder: [],
+            participantName: ''
         }
+        this.handleNameChanged = this.handleNameChanged.bind(this);
     }
+
+    handleNameChanged (event) {
+        this.setState({participantName: event.target.value})
+      }
 
     componentDidMount() {
         console.log(this.props)
@@ -48,30 +55,36 @@ class ParticipantSelection extends Component {
 
     render() {
         return (
-            <div className = "fluid-container justify-content-center"> 
-            <Container>
-                <h1 className ="text-light"> List your choices by click on the button</h1>
-                <div className="row pt-3">
-                    {/* <Link /> */}
-                </div>
-                < div className = "row justify-content-center" >
-                    <div className = "col-5">
-                    <AllChoices 
-                        choices={this.state.allChoices} 
-                        sortChoice={this.sortChoice}
-                    />
+            <div className ="fluid-container justify-content-center"> 
+                <Container>
+                    <div className="row justify-content-center">
+                        <Link />
                     </div>
-                    <div className="col-7">
-                    <ChoiceOrder 
-                        positions={this.state.userOrder}
-                        removeChoice={this.state.removeChoice}
-                    />
+                    <br></br>
+                    <div className="row justify-content-center">
+                        <Name />
                     </div>
-                </div>
-                <div className="row">
-                    {/* <Voters /> */}
-                </div>
-            </Container>
+                    < div className ="row justify-content-center">
+                        <div className = "col-5">
+                        <AllChoices 
+                            choices={this.state.allChoices} 
+                            sortChoice={this.sortChoice}
+                        />
+                        </div>
+                        <div className="col-7">
+                        <ChoiceOrder 
+                            positions={this.state.userOrder}
+                            removeChoice={this.state.removeChoice}
+                        />
+                        </div>
+                    </div>
+                    <div className="row">
+                        {/* <Voters /> */}
+                    </div>
+                    <div className="row justify-content-center">
+                        <button className="btn btn-outline-light btn-lg p-2" onClick={''}>Submit</button>
+                    </div>
+                </Container>
             </div>
         )
     }
