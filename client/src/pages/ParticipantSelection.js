@@ -15,10 +15,10 @@ class ParticipantSelection extends Component {
             userOrder: []
         }
     }
-
+    // 'http://localhost:3001'
     componentDidMount() {
         console.log(this.props)
-        axios.get('http://localhost:3001' + this.props.match.url)
+        axios.get('https://pik-it.herokuapp.com' + this.props.match.url)
         .then(json => {
             this.setState({allChoices: json.data[0].Choices});
         } )
