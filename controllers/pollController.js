@@ -68,7 +68,7 @@ module.exports = {
         include: [db.Choice]
       }).then(function(dbResult) {
           console.log("got choices");
-          res.json(dbResult);
+          res.send(dbResult);
       })
   },
 
