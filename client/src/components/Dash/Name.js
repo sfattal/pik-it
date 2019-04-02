@@ -6,7 +6,6 @@ function Name(props) {
         <div className = "fluid-container justify-content-center border-rounded" >
             <div className='row justify-content-center d-flex'>
                 <h4 className ="text-light">Name</h4>
-            <div className='col-12 pb-3 justify-content-center d-flex'>
                 <div className="form-group col-6 justify-content-center">
                 <input  
                     id ="name" 
@@ -18,7 +17,6 @@ function Name(props) {
                     autoFocus
                 />
                 </div>
-            </div>
             </div>
         </div>
     )

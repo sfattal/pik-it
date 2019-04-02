@@ -60,10 +60,11 @@ class ParticipantSelection extends Component {
                     <div className="row justify-content-center">
                         <Link />
                     </div>
+                    <br></br>
                     <div className="row justify-content-center">
                         <Name />
                     </div>
-                    < div className ="row justify-content-center" >
+                    < div className ="row justify-content-center">
                         <div className = "col-5">
                         <AllChoices 
                             choices={this.state.allChoices} 
@@ -81,7 +82,7 @@ class ParticipantSelection extends Component {
                         {/* <Voters /> */}
                     </div>
                     <div className="row justify-content-center">
-                        <button className="btn btn-outline-light btn-lg p-2 " onClick={''}>Submit</button>
+                        <button className="btn btn-outline-light btn-lg p-2" onClick={''}>Submit</button>
                     </div>
                 </Container>
             </div>
