@@ -122,6 +122,7 @@ export class Form extends React.Component {
 
   addChoice = () => {
     var {choice, choices} = this.state;
+    console.log(process.env)
 
     if (choice === "") {
       this.emptyString(); 
@@ -169,7 +170,7 @@ export class Form extends React.Component {
     }
     
     console.log(this.state);
-    
+    console.log(process.env.URL)
     var pollKey = shortlink();
     console.log("pollkey: " + pollKey);
     this.setState({key: pollKey})
