@@ -3,13 +3,13 @@ const app = express()
 const PORT = process.env.PORT || 3001
 const router = require("./routes/index.js")
 var db = require("./models")
-var cors = require("cors")
+// var cors = require("cors")
 
 
 // Configure body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({credentials: true, origin: true}))
+// app.use(cors({credentials: true, origin: true}))
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
