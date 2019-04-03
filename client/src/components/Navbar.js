@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/">
-                    <span> <img id ="navBarLogo" src = "https://scontent-lga3-1.xx.fbcdn.net/v/t1.15752-9/55704659_392603638134129_887138109307748352_n.png?_nc_cat=100&_nc_ht=scontent-lga3-1.xx&oh=d6f3bbb45e085891bb34877bd09d7de2&oe=5D4CE6EB"/> </span>
+                    <span> <img id="navBarLogo" alt="logo" src="https://scontent-lga3-1.xx.fbcdn.net/v/t1.15752-9/55704659_392603638134129_887138109307748352_n.png?_nc_cat=100&_nc_ht=scontent-lga3-1.xx&oh=d6f3bbb45e085891bb34877bd09d7de2&oe=5D4CE6EB"/> </span>
 
       </Link>
       <div>
