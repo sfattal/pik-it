@@ -103,23 +103,26 @@ module.exports = {
             
       })
   },
-  sendResponseData: function(req, res, responseData, id) {
-      responseData.userChoices.forEach(choice => {
-          db.Response.Create({
-            poll_id: responseData.poll_id,
+  sendResponseData: function(req, res, id) {
+      req.body.responses.forEach(response => {
+          db.Response.create({
+            poll_id: req.body.poll_id,
             user_id: id,
-            choice_id: choice.id,
-            choice_rank: choice.rank
+            choice_id: response.id,
+            rank: response.rank
           })
       })
+      setTimeout(() => {
+        res.send({pollkey: req.body.poll_key})
+    }, 1000)
   },
   sendUserData: function(req, res) {
-      db.User.Create({
-        user_name: req.body.userName,
+      db.User.create({
+        user_name: req.body.participantName,
         user_email: req.body.userEmail,
         temp_account: true
       }).then(function(dbResult) {
-          sendResponseData(req, res, responseData, dbResult.id)
+          module.exports.sendResponseData(req, res, dbResult.id)
       })
   }
 }

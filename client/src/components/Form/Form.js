@@ -172,8 +172,6 @@ export class Form extends React.Component {
       return randVar
     }
     
-    console.log(this.state);
-    console.log(process.env.URL)
     var pollKey = shortlink();
     console.log("pollkey: " + pollKey);
     this.setState({key: pollKey})

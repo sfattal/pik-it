@@ -8,12 +8,12 @@ module.exports = function(sequelize, DataTypes) {
             },
             user_email: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: true
             },
-            user_key: {
-                type: DataTypes.STRING,
-                allowNull: false
-            },
+            // user_key: {
+            //     type: DataTypes.STRING,
+            //     allowNull: false
+            // },
             temp_account: {
                 type: DataTypes.BOOLEAN,
                 allowNull: false

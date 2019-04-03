@@ -15,7 +15,7 @@ module.exports = function(app) {
   
   app.get("/api/polls/:pollkey", controller.getPollChoices)
 
-  app.get("/api/results/:pollid", controller.doAllTheWork)
+  app.get("/api/results/:pollkey", controller.doAllTheWork)
 
   app.post("/api/sendPollData", controller.sendPollData);
 
@@ -23,6 +23,6 @@ module.exports = function(app) {
   //   console.log(req)
   // });
 
-  app.post("/api/sendResponseData", controller.sendResponseData);
+  app.post("/api/sendResponseData", controller.sendUserData);
 
 }
