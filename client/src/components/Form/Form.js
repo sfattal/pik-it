@@ -162,8 +162,8 @@ export class Form extends React.Component {
     console.log(this.state)
   }
 
-  submit = () => {
-    let that = this
+  submit = (event) => {
+    event.preventDefault()
     function shortlink () { 
       var shortlink = require('shortlink');
       let randVar = shortlink.generate(8); // Random string of 8 characters, e.g. 'PJWn4T42' 
