@@ -181,7 +181,7 @@ export class Form extends React.Component {
     // REAL URL: 'https://pik-it.herokuapp.com/api/sendPollData'
     //local url: 'http://localhost:3001/api/sendPollData'
 
-    axios.post('https://pik-it.herokuapp.com/api/sendPollData', {
+    axios.post("/api/sendPollData", {
       title: this.state.title,
       key : pollKey,
       description : this.state.desc,
@@ -193,7 +193,7 @@ export class Form extends React.Component {
       "Access-Control-Allow-Origin": "* "
     }})
     .then(function (response) {
-      window.location.replace(`/api/polls/${pollKey}`);
+      window.location.replace(`/polls/${pollKey}`);
     })
     .catch(function (error) {
       console.log(error);

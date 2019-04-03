@@ -19,7 +19,7 @@ class ParticipantSelection extends Component {
     //'https://pik-it.herokuapp.com'
     componentDidMount() {
         console.log(this.props)
-        axios.get('https://pik-it.herokuapp.com' + this.props.match.url)
+        axios.get('/api' + this.props.match.url)
         .then(json => {
             this.setState({allChoices: json.data[0].Choices});
         })

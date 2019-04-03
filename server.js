@@ -30,6 +30,12 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
+// Send every request to the React app
+// Define any API routes before this runs
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
   require("./scripts/seeds.js")(db);
