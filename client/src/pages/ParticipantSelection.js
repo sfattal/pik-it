@@ -19,27 +19,23 @@ class ParticipantSelection extends Component {
         }
         this.handleNameChanged = this.handleNameChanged.bind(this);
     }
-
+  
+  
     handleNameChanged (event) {
         this.setState({participantName: event.target.value})
       }
 
+    // 'http://localhost:3001'
+    //'https://pik-it.herokuapp.com'
     componentDidMount() {
-        // console.log(this.props)
-        axios.get('http://localhost:3001' + this.props.match.url)
+        console.log(this.props)
+        axios.get('/api' + this.props.match.url)
         .then(json => {
             this.setState({allChoices: json.data[0].Choices});
-        } )
-        .then(response => {
-            this.renderAllChoices();
         })
         .catch(function(error) {
             console.log(error);
             });
-    }
-
-    renderAllChoices = (choice) => {
-        return <AllChoices choice={choice}/>
     }
 
     sortChoice = ({currentTarget}) => {

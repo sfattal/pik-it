@@ -100,6 +100,7 @@ export class Form extends React.Component {
   // Step One Function(s)
   handleTitleChanged (event) {
     this.setState({title: event.target.value})
+    console.log(process.env)
   }
 
   handleDescChanged (event) {
@@ -161,8 +162,10 @@ export class Form extends React.Component {
     console.log(this.state)
   }
 
-  submit = () => {
-    // let that = this
+
+  submit = (event) => {
+    event.preventDefault()
+
     function shortlink () { 
       var shortlink = require('shortlink');
       let randVar = shortlink.generate(8); // Random string of 8 characters, e.g. 'PJWn4T42' 
@@ -175,10 +178,12 @@ export class Form extends React.Component {
     console.log("pollkey: " + pollKey);
     this.setState({key: pollKey})
 
-    var url = process.env.URL || 'http://localhost:3001'
-    
+    // var url = process.env.URL || 'http://localhost:3001'
+    // `${url}/api/sendPollData`
+    // REAL URL: 'https://pik-it.herokuapp.com/api/sendPollData'
+    //local url: 'http://localhost:3001/api/sendPollData'
 
-    axios.post(`${url}/api/sendPollData`, {
+    axios.post("/api/sendPollData", {
       title: this.state.title,
       key : pollKey,
       description : this.state.desc,
@@ -190,7 +195,7 @@ export class Form extends React.Component {
       "Access-Control-Allow-Origin": "* "
     }})
     .then(function (response) {
-      window.location.replace(`/api/polls/${pollKey}`);
+      window.location.replace(`/polls/${pollKey}`);
     })
     .catch(function (error) {
       console.log(error);
