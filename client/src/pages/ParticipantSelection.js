@@ -15,20 +15,24 @@ class ParticipantSelection extends Component {
             allChoices: [],
             userOrder: [],
             participantName: '',
-            pollID: ''
+            pollID: '',
+            pollKey: ''
         }
         this.handleNameChanged = this.handleNameChanged.bind(this);
     }
   
   
     handleNameChanged (event) {
+        console.log("triggered handleNameChanged")
         this.setState({participantName: event.target.value})
+        console.log(this.state);
       }
 
     // 'http://localhost:3001'
     //'https://pik-it.herokuapp.com'
     componentDidMount() {
         console.log(this.props)
+        this.setState( { pollkey: this.props.match.params.key } )
         axios.get('/api' + this.props.match.url)
         .then(json => {
             this.setState({allChoices: json.data[0].Choices});
@@ -48,6 +52,29 @@ class ParticipantSelection extends Component {
 
     removeChoice = () => {
         // onClick function that removes the user's choice from the userOrder array back to allChoices !!PASS AS PROP!!
+    }
+
+    submit = (event) => {
+        event.preventDefault();
+        console.log("submitted");
+        console.log(this.state);
+
+        axios.post("/api/sendResponseData", {
+            poll_id: this.state.pollID,
+            participantName: this.state.participantName,
+            key : this.state.pollKey,
+            responses : this.state.userOrder,
+          }, {"headers": {
+            "Content-Type": "application/json",
+            "cache-control": "no-cache",
+            "Access-Control-Allow-Origin": "* "
+          }})
+          .then(function (response) {
+            console.log("thanks for voting")
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     render() {
@@ -85,7 +112,7 @@ class ParticipantSelection extends Component {
                         {/* <Voters /> */}
                     </div>
                     <div className="row justify-content-center">
-                        <button className="btn btn-outline-dark btn-lg p-2" onClick={''}>Submit</button>
+                        <button className="btn btn-outline-dark btn-lg p-2" onClick={this.submit}>Submit</button>
                     </div>
                     </div>
                 </Container>
