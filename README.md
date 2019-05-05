@@ -1,10 +1,4 @@
-# pik-it
 
-description...
-
-## Deployment
-
-The live project can be viewed here: https://pik-it.herokuapp.com/
 
 ## Built With
 
