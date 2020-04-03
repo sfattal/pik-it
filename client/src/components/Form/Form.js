@@ -44,6 +44,7 @@ export class Form extends React.Component {
     }
   }
 
+  // NEED TO SET THIS UP TO USE PREVSTATE!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   setPageBack = () => {
     this.setState({page: this.state.page - 1})
   }
@@ -206,6 +207,7 @@ export class Form extends React.Component {
     return (
       <div className ="pt-3">
         {this.renderPage()}
+        {console.log(this.state)}
       </div>
     )
   }

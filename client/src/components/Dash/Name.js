@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Name(props) {
-    // console.log(props)
+    console.log(props)
     return (
         <div className = "fluid-container justify-content-center border-rounded col 8" >
             <div className='justify-content-center d-flex'>

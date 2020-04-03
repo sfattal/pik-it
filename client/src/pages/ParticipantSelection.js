@@ -32,7 +32,7 @@ class ParticipantSelection extends Component {
     //'https://pik-it.herokuapp.com'
     componentDidMount() {
         console.log(this.props)
-        this.setState( { pollkey: this.props.match.params.key } )
+        this.setState( { pollKey: this.props.match.params.key } )
         axios.get('/api' + this.props.match.url)
         .then(json => {
             this.setState({allChoices: json.data[0].Choices});
@@ -87,7 +87,7 @@ class ParticipantSelection extends Component {
                         <Name 
                             participantName={this.state.participantName}
                             handleNameChanged={this.state.handleNameChanged}
-                        />
+                        /> {console.log("mounted Name")} {console.log(this.state)}
                     </div>
                     < div className ="row justify-content-center">
                         <div className = "col-5">
