@@ -31,11 +31,15 @@ class ParticipantSelection extends Component {
     // 'http://localhost:3001'
     //'https://pik-it.herokuapp.com'
     componentDidMount() {
+        console.log("comp did mount")
         console.log(this.props)
         this.setState( { pollKey: this.props.match.params.key } )
         axios.get('/api' + this.props.match.url)
         .then(json => {
-            this.setState({allChoices: json.data[0].Choices});
+            this.setState({
+                allChoices: json.data[0].Choices,
+                pollID: json.data[0].Choices[0].poll_id
+            });
         })
         .catch(function(error) {
             console.log(error);
@@ -86,7 +90,7 @@ class ParticipantSelection extends Component {
                     <div className="row justify-content-left p-3">
                         <Name 
                             participantName={this.state.participantName}
-                            handleNameChanged={this.state.handleNameChanged}
+                            handleNameChanged={this.handleNameChanged}
                         /> {console.log("mounted Name")} {console.log(this.state)}
                     </div>
                     < div className ="row justify-content-center">
@@ -95,13 +99,13 @@ class ParticipantSelection extends Component {
                             choices={this.state.allChoices} 
                             sortChoice={this.sortChoice}
                             positions={this.state.userOrder}
-                            removeChoice={this.state.removeChoice}
+                            removeChoice={this.removeChoice}
                         />
                         </div>
                         <div className="col-7">
                         <ChoiceOrder 
                             positions={this.state.userOrder}
-                            removeChoice={this.state.removeChoice}
+                            removeChoice={this.removeChoice}
                         />
                         </div>
                     </div>

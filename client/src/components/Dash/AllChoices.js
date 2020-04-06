@@ -2,7 +2,7 @@ import React from 'react'
 
 function AllChoices(props) {
     console.log("before")
-    console.log("props: " + props)
+    console.log(props)
     console.log("consoled props")
     return (
         <div className="allChoices">
