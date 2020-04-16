@@ -17,9 +17,9 @@ function ChoiceOrder(props) {
                                     className="mt-2"
                                     key={position.id}
                                     pollkey={position.pollID}
-                                    value={position.position_text}
+                                    value={position.choice_text}
                                     choicetext={position.choice_text}
-                                >{position}</h6>
+                                >{position[0]}</h6>
                             </div>
                             <div className="col-2">
                                 <button className="btn btn-danger" id="removeChoice">remove</button>

@@ -19,6 +19,7 @@ class ParticipantSelection extends Component {
             pollKey: ''
         }
         this.handleNameChanged = this.handleNameChanged.bind(this);
+        this.copyLink = this.copyLink.bind(this);
     }
   
   
@@ -47,8 +48,12 @@ class ParticipantSelection extends Component {
     }
 
     sortChoice = ({currentTarget}) => {
-        // console.log(currentTarget.value)
-        const choice = currentTarget.value
+        console.log("current target: ")
+        console.log(currentTarget)
+        const choiceText = currentTarget.value
+        const choiceID = currentTarget.getAttribute("choiceID")
+        const choice = [ choiceText, choiceID ]
+        console.log(choice)
         // console.log(this.state.userOrder)
         this.setState({userOrder: [...this.state.userOrder, choice]}, ()=> console.log(this.state.userOrder))
         
@@ -56,6 +61,28 @@ class ParticipantSelection extends Component {
 
     removeChoice = () => {
         // onClick function that removes the user's choice from the userOrder array back to allChoices !!PASS AS PROP!!
+    }
+
+    copyLink () {
+        const pollLink = "http://localhost:3000/polls/" + this.state.pollKey
+        console.log(pollLink)
+
+        // Create new element
+        var el = document.createElement('textarea');
+        // Set value (string to be copied)
+        el.value = pollLink;
+        // Set non-editable to avoid focus and move outside of view
+        el.setAttribute('readonly', '');
+        el.style = {position: 'absolute', left: '-9999px'};
+        document.body.appendChild(el);
+        // Select text inside element
+        el.select();
+        // Copy text to clipboard
+        document.execCommand('copy');
+        // Remove temporary element
+        document.body.removeChild(el);
+
+        console.log("copied link!!!")
     }
 
     submit = (event) => {
@@ -75,6 +102,9 @@ class ParticipantSelection extends Component {
           }})
           .then(function (response) {
             console.log("thanks for voting")
+            console.log(response)
+            console.log("thanks again!")
+            window.location.replace(`/thanks`);
           })
           .catch(function (error) {
             console.log(error);
@@ -91,7 +121,7 @@ class ParticipantSelection extends Component {
                         <Name 
                             participantName={this.state.participantName}
                             handleNameChanged={this.handleNameChanged}
-                        /> {console.log("mounted Name")} {console.log(this.state)}
+                        /> {console.log(this.state)}
                     </div>
                     < div className ="row justify-content-center">
                         <div className = "col-5">
@@ -110,7 +140,7 @@ class ParticipantSelection extends Component {
                         </div>
                     </div>
                     <div className="row justify-content-center p-3">
-                        <Link />
+                        <Link pollKey={this.state.pollKey} copyLink={this.copyLink}/>
                     </div>
                     <div className="row">
                         {/* <Voters /> */}

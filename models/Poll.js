@@ -13,6 +13,10 @@ module.exports = function(sequelize, DataTypes) {
         poll_key: {
           type: DataTypes.STRING
         },
+        admin_key: {
+          type: DataTypes.STRING,
+          allowNull: true
+        },
         poll_description: {
           type: DataTypes.TEXT,
           allowNull: true
@@ -31,11 +35,18 @@ module.exports = function(sequelize, DataTypes) {
 
       Poll.associate = function(models) {
         Poll.hasMany(models.Choice, {
-        foreignKey: {
-            name: "poll_id",
-            allowNull: false
-        }
-    });
+          foreignKey: {
+              name: "poll_id",
+              allowNull: false
+          }
+      });
+        
+        Poll.hasMany(models.Response, {
+          foreignKey: {
+              name: "poll_id",
+              allowNull: false
+          }
+      });
     };
     
     return Poll;

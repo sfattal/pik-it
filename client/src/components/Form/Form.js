@@ -15,6 +15,7 @@ export class Form extends React.Component {
       title: '', 
       desc: '',
       key: '',
+      admin_key: '',
       email: '',
       choice: '',
       choices: [],
@@ -27,6 +28,7 @@ export class Form extends React.Component {
     this.handleEmailChanged = this.handleEmailChanged.bind(this);
     this.handleChoiceChanged = this.handleChoiceChanged.bind(this);
     this.handleChoicesChanged = this.handleChoicesChanged.bind(this);
+    this.handleEnter = this.handleEnter.bind(this)
     this.handleDateChanged = this.handleDateChanged.bind(this);
     this.submit = this.submit.bind(this);
   }
@@ -80,6 +82,7 @@ export class Form extends React.Component {
           addChoice={this.addChoice} 
           handleChoiceChanged={this.handleChoiceChanged}
           handleChoicesChanged={this.handleChoicesChanged}
+          handleEnter={this.handleEnter}
           renderAddChoices={this.renderAddChoices}
         />
       )
@@ -119,17 +122,23 @@ export class Form extends React.Component {
 
   duplicateChoice = () => {
     alert("you have entered a duplicate choice, please re-enter a different choice")
-
   }
 
   addChoice = () => {
     var {choice, choices} = this.state;
+    var choicesLC = choices.map((choice) => { return choice.toLowerCase() })
+    var choiceLC = choice.toLowerCase()
     console.log(process.env)
+    console.log(choicesLC)
 
     if (choice === "") {
-      this.emptyString(); 
+      // this.emptyString();
+      document.getElementById("next-button").focus()
     }
-    else if (choices.includes (choice)) { 
+    // else if (choices.includes (choice)) { 
+    //   this.duplicateChoice();
+    // }
+    else if ( choicesLC.includes (choiceLC) ) {
       this.duplicateChoice();
     }
     else {
@@ -150,6 +159,18 @@ export class Form extends React.Component {
     this.setState({choices: event.target.value})
   }
 
+  handleEnter (event) {
+    if (event.key === "Enter") {
+      console.log("I hit enter!")
+      if (this.choice === "") {
+        console.log('blank choice')
+      }
+      else {
+        document.getElementById("add-choice").click()
+      }
+    }
+  }
+
   renderAddChoices = () => {
     console.log(this.state)
     return this.state.choices.map(choice => {
@@ -167,15 +188,20 @@ export class Form extends React.Component {
   submit = (event) => {
     event.preventDefault()
 
-    function shortlink () { 
+    function shortlink (num) { 
       var shortlink = require('shortlink');
-      let randVar = shortlink.generate(8); // Random string of 8 characters, e.g. 'PJWn4T42' 
+      let randVar = shortlink.generate(num); // Random string of 8 characters, e.g. 'PJWn4T42' 
       return randVar
     }
     
-    var pollKey = shortlink();
+    var pollKey = shortlink(8);
+    var adminKey = shortlink(9)
     console.log("pollkey: " + pollKey);
-    this.setState({key: pollKey})
+    console.log("adminkey: " + adminKey);
+    this.setState({
+      key: pollKey,
+      admin_key: adminKey
+    })
 
     // var url = process.env.URL || 'http://localhost:3001'
     // `${url}/api/sendPollData`
@@ -185,6 +211,7 @@ export class Form extends React.Component {
     axios.post("/api/sendPollData", {
       title: this.state.title,
       key : pollKey,
+      admin_key: adminKey,
       description : this.state.desc,
       expiration: this.state.date,
       choices: this.state.choices

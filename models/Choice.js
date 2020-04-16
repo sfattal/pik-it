@@ -14,12 +14,12 @@ module.exports = function(sequelize, DataTypes) {
 
         Choice.associate = function(models) {
             Choice.belongsTo(models.Poll, {
-            foreignKey: {
-                name: "poll_id",
-                allowNull: false
-            }
-        });
-    };
+                foreignKey: {
+                    name: "poll_id",
+                    allowNull: false
+                }
+            });
+        };
     
     return Choice;
 };
