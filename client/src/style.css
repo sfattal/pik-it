@@ -19,3 +19,11 @@ body {
     font-weight: normal;
     font-style: normal;
 }
+
+.resultsDisplay {
+    background-color: 'white';
+    color: 'blue';
+    height: '50px';
+    width: '200px';
+
+}

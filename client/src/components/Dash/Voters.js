@@ -11,19 +11,19 @@ function Voters(props) {
     else {
       return (
         <div className="voters px-4">
-            <h4 className ="">The following users have pik'd it:</h4>
+            <h4 className ="pb-2">The following users have pik'd it:</h4>
             { props.voters.map((voter) => {
                 // console.log(choice)
                 return (
-                    <div className = "row justify-content-center pt-3">
-                        <button 
-                            className ="btn btn-outline-primary"
+                    <div className = "row justify-content-center">
+                        <h5 
+                            className ="submittedVoter"
                             key={voter.id}
                             value={voter.user_name}
                             // onClick={props.sortChoice} can have this create pop up window of user votes
                           >
                             {voter.user_name}
-                        </button>
+                        </h5>
                     </div>
                 )
             })}

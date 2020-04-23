@@ -109,7 +109,8 @@ class Admin extends Component {
         document.execCommand('copy');
         // Remove temporary element
         document.body.removeChild(el);
-
+        // Highlight the link text in input field as signal to user
+        document.getElementById("pollLink").select()
         console.log("copied link!!!")
     }
 
@@ -177,7 +178,7 @@ class Admin extends Component {
                     <br></br>
                     <div className="row justify-content-center">
                         <Link pollLink={this.state.pollLink} copyLink={this.copyLink}/>
-                    </div><br></br>
+                    </div><br></br><br></br>
                     <div className="row justify-content-center">
                         <Voters voters={this.state.voters}/>
                     </div>
