@@ -13,6 +13,8 @@ module.exports = function(app) {
     });
   });
   
+  app.get("/api/polls/admin/:adminkey", controller.getAdminPage)
+
   app.get("/api/polls/:pollkey", controller.getPollChoices)
 
   app.get("/api/results/:pollkey", controller.doAllTheWork)

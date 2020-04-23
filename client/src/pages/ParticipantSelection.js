@@ -19,6 +19,7 @@ class ParticipantSelection extends Component {
             pollKey: ''
         }
         this.handleNameChanged = this.handleNameChanged.bind(this);
+        this.copyLink = this.copyLink.bind(this);
     }
   
   
@@ -31,11 +32,15 @@ class ParticipantSelection extends Component {
     // 'http://localhost:3001'
     //'https://pik-it.herokuapp.com'
     componentDidMount() {
+        console.log("comp did mount")
         console.log(this.props)
-        this.setState( { pollkey: this.props.match.params.key } )
+        this.setState( { pollKey: this.props.match.params.key } )
         axios.get('/api' + this.props.match.url)
         .then(json => {
-            this.setState({allChoices: json.data[0].Choices});
+            this.setState({
+                allChoices: json.data[0].Choices,
+                pollID: json.data[0].Choices[0].poll_id
+            });
         })
         .catch(function(error) {
             console.log(error);
@@ -43,8 +48,12 @@ class ParticipantSelection extends Component {
     }
 
     sortChoice = ({currentTarget}) => {
-        // console.log(currentTarget.value)
-        const choice = currentTarget.value
+        console.log("current target: ")
+        console.log(currentTarget)
+        const choiceText = currentTarget.value
+        const choiceID = currentTarget.getAttribute("choiceID")
+        const choice = [ choiceText, choiceID ]
+        console.log(choice)
         // console.log(this.state.userOrder)
         this.setState({userOrder: [...this.state.userOrder, choice]}, ()=> console.log(this.state.userOrder))
         
@@ -52,6 +61,28 @@ class ParticipantSelection extends Component {
 
     removeChoice = () => {
         // onClick function that removes the user's choice from the userOrder array back to allChoices !!PASS AS PROP!!
+    }
+
+    copyLink () {
+        const pollLink = "http://localhost:3000/polls/" + this.state.pollKey
+        console.log(pollLink)
+
+        // Create new element
+        var el = document.createElement('textarea');
+        // Set value (string to be copied)
+        el.value = pollLink;
+        // Set non-editable to avoid focus and move outside of view
+        el.setAttribute('readonly', '');
+        el.style = {position: 'absolute', left: '-9999px'};
+        document.body.appendChild(el);
+        // Select text inside element
+        el.select();
+        // Copy text to clipboard
+        document.execCommand('copy');
+        // Remove temporary element
+        document.body.removeChild(el);
+
+        console.log("copied link!!!")
     }
 
     submit = (event) => {
@@ -71,6 +102,9 @@ class ParticipantSelection extends Component {
           }})
           .then(function (response) {
             console.log("thanks for voting")
+            console.log(response)
+            console.log("thanks again!")
+            window.location.replace(`/thanks`);
           })
           .catch(function (error) {
             console.log(error);
@@ -86,8 +120,8 @@ class ParticipantSelection extends Component {
                     <div className="row justify-content-left p-3">
                         <Name 
                             participantName={this.state.participantName}
-                            handleNameChanged={this.state.handleNameChanged}
-                        />
+                            handleNameChanged={this.handleNameChanged}
+                        /> {console.log(this.state)}
                     </div>
                     < div className ="row justify-content-center">
                         <div className = "col-5">
@@ -95,18 +129,18 @@ class ParticipantSelection extends Component {
                             choices={this.state.allChoices} 
                             sortChoice={this.sortChoice}
                             positions={this.state.userOrder}
-                            removeChoice={this.state.removeChoice}
+                            removeChoice={this.removeChoice}
                         />
                         </div>
                         <div className="col-7">
                         <ChoiceOrder 
                             positions={this.state.userOrder}
-                            removeChoice={this.state.removeChoice}
+                            removeChoice={this.removeChoice}
                         />
                         </div>
                     </div>
                     <div className="row justify-content-center p-3">
-                        <Link />
+                        <Link pollKey={this.state.pollKey} copyLink={this.copyLink}/>
                     </div>
                     <div className="row">
                         {/* <Voters /> */}

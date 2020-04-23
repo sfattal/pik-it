@@ -17,7 +17,7 @@ function StepOne(props) {
         <div className='row justify-content-center d-flex'>
               <h4> Description</h4>
           <div className = 'col-12 pb-3 justify-content-center d-flex'>
-              <div class="form-group col-6 justify-content-center">
+              <div className="form-group col-6 justify-content-center">
                   <input id ="desc" type="text" className="form-control" placeholder="optional"
                   onChange={props.handleDescChanged}
                   value={props.desc}/>
@@ -27,7 +27,7 @@ function StepOne(props) {
           <div className='row justify-content-center d-flex'>
                 <h4> Email</h4>
                 <div className = 'col-12 pb-3 justify-content-center d-flex' >
-                    <div class="form-group col-6 justify-content-center">
+                    <div className="form-group col-6 justify-content-center">
                     <input id="email" type="text" className="form-control" placeholder="required" onChange={props.handleEmailChanged}
                       value={props.email}
                       autoFocus />

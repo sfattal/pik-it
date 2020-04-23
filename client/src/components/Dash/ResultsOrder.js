@@ -1,25 +1,24 @@
 import React from 'react'
 
-function AllChoices(props) {
+function ResultsOrder(props) {
     console.log("before")
-    // console.log(props)
+    console.log(props)
     console.log("consoled props")
     return (
         <div className="allChoices">
-            <h4 className ="">Click each choice to rank them</h4>
+            <h4 className ="">Poll Results Below:</h4>
             { props.choices.map((choice) => {
                 // console.log(choice)
                 return (
                     <div className = "row justify-content-center pt-3">
                         <button 
                             className ="btn btn-outline-primary"
-                            key={choice.id}
-                            poll_id={choice.poll_id}
-                            value={choice.choice_text}
-                            choiceText={choice.choice_text}
-                            choiceID={choice.id}
-                            onClick={props.sortChoice}>
-                            {choice.choice_text}
+                            key={choice.choiceId}
+                            // poll_id={choice.poll_id}
+                            // value={choice.choice_text}
+                            // choiceText={choice.choice_text}
+                            choiceid={choice.choiceId}>
+                            {choice.choiceName}
                         </button>
                     </div>
                 )
@@ -28,4 +27,4 @@ function AllChoices(props) {
     )
 }
 
-export default AllChoices
+export default ResultsOrder
