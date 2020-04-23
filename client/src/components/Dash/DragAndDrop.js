@@ -55,17 +55,20 @@ const getListStyle = isDraggingOver => ({
     padding: grid,
     overflow: 'auto',
     width: '300px',
-    height: '400px',
+    minHeight: '400px',
   });
 
   const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
     padding: grid * 2,
-    margin: `0 ${grid}px 0 0`,
+    margin: `${grid/2}px`,
+    borderRadius: '25px',
+    borderWidth: '15',
+    borderColor: '#fff',
   
     // change background colour if dragging
-    background: isDragging ? 'lightgreen' : 'grey',
+    background: isDragging ? 'lightgreen' : 'white',
   
     // styles we need to apply on draggables
     ...draggableStyle,
@@ -86,7 +89,7 @@ function DragAndDrop(props) {
 
   return (
     <DragDropContext onDragEnd={props.onDragEnd}>
-    <div>
+    <div className="flex-column justify-content-center">
         <div><h5>Available choices:</h5>
             <Droppable droppableId="allChoices" direction="horizontal">
                 { (provided, snapshot) => (
@@ -115,10 +118,11 @@ function DragAndDrop(props) {
                 )}
             </Droppable>
         </div>
-        <br></br><br></br>
-        <div>
+        <br></br>
+        <div className="d-flex flex-column justify-content-center">
             <h5>Your piks:</h5>
-            <Droppable droppableId="rankSelection" direction="vertical">
+            <div className="d-flex justify-content-center">
+            <Droppable droppableId="rankSelection" className="d-flex justify-content-center" direction="vertical">
                 {(provided, snapshot) => (
                     <div
                         ref={provided.innerRef}
@@ -143,7 +147,7 @@ function DragAndDrop(props) {
                         {provided.placeholder}
                     </div>
                 )}
-            </Droppable>
+            </Droppable></div>
         </div>
     </div>
     </DragDropContext>

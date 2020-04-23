@@ -53,28 +53,32 @@ class Admin extends Component {
         //         pollResulted: !prevState.pollResulted
         //     }
         // })
-        const pollResulted = !this.state.pollResulted
-        this.setState({
-            pollResulted: pollResulted
-        })
-        const url = "/api/polls/update/" + this.state.pollKey
-        console.log("poll resulted status is " + pollResulted)
-        console.log(url)
-        axios.put(url, {
-            pollResulted: pollResulted
-        }, {"headers": {
-            "Content-Type": "application/json",
-            "cache-control": "no-cache",
-            "Access-Control-Allow-Origin": "* "
-          }})
-          .then(function (response) {
-            console.log("poll resulteddd")
-            console.log(response);
-            document.getElementById("resultsButton").focus()
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        if (this.state.voters.length < 2) {
+            alert("Can't result poll before 2 users have submitted")
+        } else {
+            const pollResulted = !this.state.pollResulted
+            this.setState({
+                pollResulted: pollResulted
+            })
+            const url = "/api/polls/update/" + this.state.pollKey
+            console.log("poll resulted status is " + pollResulted)
+            console.log(url)
+            axios.put(url, {
+                pollResulted: pollResulted
+            }, {"headers": {
+                "Content-Type": "application/json",
+                "cache-control": "no-cache",
+                "Access-Control-Allow-Origin": "* "
+            }})
+            .then(function (response) {
+                console.log("poll resulteddd")
+                console.log(response);
+                document.getElementById("resultsButton").focus()
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }   
     }
 
     goToResults() {
