@@ -14,6 +14,8 @@ module.exports = function(app) {
   });
   
   app.get("/api/polls/admin/:adminkey", controller.getAdminPage)
+  
+  app.put("/api/polls/update/:pollkey", controller.resultPoll)
 
   app.get("/api/polls/:pollkey", controller.getPollChoices)
 

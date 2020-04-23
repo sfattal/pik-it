@@ -14,6 +14,7 @@ function Name(props) {
                     placeholder="required"   
                     onChange={props.handleNameChanged}
                     value={props.participantName}
+                    required
                     autoFocus
                 />
                 </div>

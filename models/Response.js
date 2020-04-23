@@ -33,12 +33,12 @@ module.exports = function(sequelize, DataTypes) {
                     allowNull: false
                 }
             });
-            // Response.belongsTo(models.User, {
-            //     foreignKey: {
-            //         name: "user_id",
-            //         allowNull: false
-            //     }
-            // });
+            Response.belongsTo(models.User, {
+                foreignKey: {
+                    name: "user_id",
+                    allowNull: false
+                }
+            });
           };
     return Response;
   };

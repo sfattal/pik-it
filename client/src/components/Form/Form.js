@@ -84,6 +84,7 @@ export class Form extends React.Component {
           handleChoicesChanged={this.handleChoicesChanged}
           handleEnter={this.handleEnter}
           renderAddChoices={this.renderAddChoices}
+          submit={this.submit}
         />
       )
     }
@@ -133,7 +134,7 @@ export class Form extends React.Component {
 
     if (choice === "") {
       // this.emptyString();
-      document.getElementById("next-button").focus()
+      document.getElementById("submitButton").focus()
     }
     // else if (choices.includes (choice)) { 
     //   this.duplicateChoice();
@@ -221,7 +222,7 @@ export class Form extends React.Component {
       "Access-Control-Allow-Origin": "* "
     }})
     .then(function (response) {
-      window.location.replace(`/polls/${pollKey}`);
+      window.location.replace(`/polls/admin/${adminKey}`);
     })
     .catch(function (error) {
       console.log(error);

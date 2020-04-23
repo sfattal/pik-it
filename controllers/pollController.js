@@ -110,6 +110,8 @@ module.exports = {
             var poll_id = dbResult[0].id
             const choices = dbResult[0].Choices
             const responses = dbResult[0].Responses
+            const voters = dbResult[0].Users
+            const pollResulted = dbResult[0].poll_resulted
             //manually doing determineChoices workflow (adding keys to dictionary):
             //CAN ALSO try creating the object array instead and then adding rank property later? aka resArray[i].rank += rank
             for (i=0; i<choices.length; i++) {
@@ -135,7 +137,11 @@ module.exports = {
             // console.log(responses)
             rankings.sort((a,b) => (a.choiceRank > b.choiceRank) ? 1 : ((b.choiceRank > a.choiceRank) ? -1 : 0));
             console.log(rankings)
-            res.send(rankings)
+            res.send({
+                rankings: rankings,
+                pollResulted: pollResulted,
+                voters: voters
+            })
         })
     },
 
@@ -206,7 +212,7 @@ module.exports = {
             db.Response.create({
                 poll_id: req.body.poll_id,
                 user_id: id,
-                choice_id: response[1],
+                choice_id: response.id,
                 rank: index
             })
         })
@@ -218,10 +224,25 @@ module.exports = {
     sendUserData: function(req, res) {
         db.User.create({
             user_name: req.body.participantName,
+            poll_id: req.body.poll_id,
             // user_email: req.body.userEmail,
             temp_account: true
         }).then(function(dbResult) {
             module.exports.sendResponseData(req, res, dbResult.id)
+        })
+    },
+
+    resultPoll: function(req, res) {
+        console.log("this is a request")
+        // console.log(req)
+        db.Poll.update(
+            {poll_resulted: req.body.pollResulted},
+            {where: {
+                poll_key: req.params.pollkey
+            }}
+        ).then(function(dbResult) {
+            console.log(dbResult)
+            res.send(dbResult)
         })
     }
 

@@ -5,7 +5,7 @@ function ResultsOrder(props) {
     console.log(props)
     console.log("consoled props")
     return (
-        <div className="allChoices">
+        <div className="allChoices px-4">
             <h4 className ="">Poll Results Below:</h4>
             { props.choices.map((choice) => {
                 // console.log(choice)

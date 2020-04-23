@@ -16,8 +16,8 @@ class Thanks extends Component {
                   </div>
                   <div id="mainCard" className="card text-center pt-3 shadow-sm">
                      <div className="card-body rounded">
-                        <h5 className="card-title">Thanks for voting!</h5>
-                        <p className="card-text">Your poll administrator will notify you once the results are ready.</p>
+                        <h5 className="card-title">Congrats! You pik'd it!</h5>
+                        <p className="card-text">Your poll administrator will notify you when your results are ready.</p>
                      </div>
                   </div>
                </Container>

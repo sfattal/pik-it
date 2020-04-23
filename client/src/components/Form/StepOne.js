@@ -30,7 +30,7 @@ function StepOne(props) {
                     <div className="form-group col-6 justify-content-center">
                     <input id="email" type="text" className="form-control" placeholder="required" onChange={props.handleEmailChanged}
                       value={props.email}
-                      autoFocus />
+                      />
                     </div>
                 </div>
             </div>
