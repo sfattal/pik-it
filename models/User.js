@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
                 type: DataTypes.STRING,
                 allowNull: true
             },
+            poll_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
             // user_key: {
             //     type: DataTypes.STRING,
             //     allowNull: false
@@ -19,5 +23,22 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
+
+        User.associate = function(models) {
+            User.belongsTo(models.Poll, {
+              foreignKey: {
+                name: "poll_id",
+                allowNull: false
+              }
+            });
+
+            User.hasMany(models.Response, {
+                foreignKey: {
+                    name: "user_id",
+                    allowNull: false
+                }
+            });
+        }
+
     return User;
   };

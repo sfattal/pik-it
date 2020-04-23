@@ -31,7 +31,8 @@ function StepTwo(props) {
       <div className='row pt-3'>
           <div className='col-12 justify-content-space-evenly'>
             <button class="btn btn-outline-dark btn-lg p-2" onClick={props.setPageBack}>Back</button>
-            <button class="btn btn-outline-dark btn-lg" id="next-button" onClick={props.setPageNext}>Next</button>
+            {/* <button class="btn btn-outline-dark btn-lg" id="next-button" onClick={props.setPageNext}>Next</button> */}
+            <button id="submitButton" className="btn btn-outline-dark btn-lg p-2" onClick={props.submit}>Submit</button>
         </div>
       </div>
     </div>

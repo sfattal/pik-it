@@ -2,11 +2,6 @@ module.exports = function(sequelize, DataTypes) {
     var Poll = sequelize.define(
       "Poll", 
       {
-        // poll_id: {
-        //   type: DataTypes.INTEGER,
-        //   autoIncrement: true,
-        //   primaryKey: true
-        // },
         poll_name: {
           type: DataTypes.STRING
         },
@@ -25,6 +20,11 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.DATE,
           allowNull: true
         },
+        poll_resulted: {
+          type: DataTypes.BOOLEAN,
+          defaultValue: false,
+          allowNull: false
+        },
         createdAt: {
           type: DataTypes.DATE
         },
@@ -34,22 +34,32 @@ module.exports = function(sequelize, DataTypes) {
       });
 
       Poll.associate = function(models) {
+        
         Poll.hasMany(models.Choice, {
           foreignKey: {
               name: "poll_id",
               allowNull: false
           }
-      });
+        });
         
         Poll.hasMany(models.Response, {
-          foreignKey: {
-              name: "poll_id",
-              allowNull: false
-          }
-      });
+            foreignKey: {
+                name: "poll_id",
+                allowNull: false
+            }
+        });
+
+        Poll.hasMany(models.User, {
+            foreignKey: {
+                name: "poll_id",
+                allowNull: false
+            }
+        });
+
     };
     
     return Poll;
+
   };
 
 

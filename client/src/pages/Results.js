@@ -3,6 +3,7 @@ import axios from 'axios'
 import Container from '../components/Container'
 import Hero from '../components/Hero/index'
 import ResultsOrder from '../components/Dash/ResultsOrder'
+import Voters from '../components/Dash/Voters'
 import './pages.css'
 
 class Results extends Component {
@@ -11,6 +12,8 @@ class Results extends Component {
         this.state = {
             pollKey: '',
             resultsOrder: [],
+            voters: [],
+            pollResulted: false,
             pending: false,
             results: []
         }
@@ -23,7 +26,9 @@ class Results extends Component {
         axios.get('/api' + this.props.match.url)
         .then(data => {
             this.setState({
-                resultsOrder: data.data
+                resultsOrder: data.data.rankings,
+                pollResulted: data.data.pollResulted,
+                voters: data.data.voters
             });
             console.log(data.data)
         })
@@ -48,13 +53,15 @@ class Results extends Component {
             <Hero>
                <Container>
                     < div className ="row justify-content-center">
-         
-                        {<ResultsOrder 
-                            choices={this.state.resultsOrder} 
-                            // sortChoice={this.sortChoice}
-                            // positions={this.state.userOrder}
-                            // removeChoice={this.removeChoice}
-                        />}
+                        {this.state.pollResulted ? 
+                            <div className="d-flex justify-content-xl-between">
+                                <ResultsOrder 
+                                className="px-5" choices={this.state.resultsOrder}/>
+                                <br></br><Voters 
+                                voters={this.state.voters}/>
+                            </div> :
+                            <h4>Your poll leader has not yet resulted this poll.</h4>
+                        }
                     </div>
                </Container>
             </Hero>
