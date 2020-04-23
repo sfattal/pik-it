@@ -63,8 +63,8 @@ const getListStyle = isDraggingOver => ({
     userSelect: 'none',
     padding: grid * 2,
     margin: `${grid/2}px`,
-    borderRadius: '25px',
-    borderWidth: '15',
+    borderRadius: '8px',
+    borderWidth: '15px',
     borderColor: '#fff',
   
     // change background colour if dragging
@@ -77,17 +77,14 @@ const getListStyle = isDraggingOver => ({
 function DragAndDrop(props) {
     console.log("dragging and dropping")
     console.log(props)
-    // const choices = props.choices
-    // console.log(choices[0])
-    // const choice1 = choices[0]
-    // console.log(choice1)
-    props.choices.map( choice => {
-        console.log("choice ID: " + choice.id)
-        // console.log("index: " + choice.index)
-    })
-    // console.log("choice1 id: " + choice1.id)
 
-  return (
+    props.choices.map( choice => {
+
+        console.log("choice ID: " + choice.id)
+    
+    })
+
+    return (
     <DragDropContext onDragEnd={props.onDragEnd}>
     <div className="flex-column justify-content-center">
         <div><h5>Available choices:</h5>
