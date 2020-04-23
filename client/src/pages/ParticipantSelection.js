@@ -211,7 +211,8 @@ class ParticipantSelection extends Component {
         document.execCommand('copy');
         // Remove temporary element
         document.body.removeChild(el);
-
+        // Highlight the link text in input field as signal to user
+        document.getElementById("pollLink").select()
         console.log("copied link!!!")
     }
 

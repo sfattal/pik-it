@@ -47,6 +47,8 @@ const getListStyle = isDraggingOver => ({
     padding: grid,
     overflow: 'auto',
     // width: '500px',
+    minWidth: '300px',
+    maxWidth: '80%',
   });
 
   const getListStyle2 = isDraggingOver => ({
@@ -87,7 +89,8 @@ function DragAndDrop(props) {
     return (
     <DragDropContext onDragEnd={props.onDragEnd}>
     <div className="flex-column justify-content-center">
-        <div><h5>Available choices:</h5>
+        <h5>Available choices:</h5>
+        <div className="d-flex justify-content-center">
             <Droppable droppableId="allChoices" direction="horizontal">
                 { (provided, snapshot) => (
                 <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)} {...provided.droppableProps}>
@@ -136,7 +139,7 @@ function DragAndDrop(props) {
                                         provided.draggableProps.style
                                         )}
                                     >
-                                        {ranking.choice_text}
+                                        {index+1} - {ranking.choice_text}
                                     </div>
                                     )}
                                 </Draggable>
