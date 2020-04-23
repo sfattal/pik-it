@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Container from '../components/Container'
 import Hero from '../components/Hero/index'
+import Logo from '../logo.png'
 import '../pages/pages.css'
 
 class Home extends Component {
@@ -12,7 +13,7 @@ class Home extends Component {
                   <div> 
                   < img id = "logoImage"
                   alt = "logo"
-                  src = "https://scontent-lga3-1.xx.fbcdn.net/v/t1.15752-9/56474629_569831600174049_1968599424057737216_n.png?_nc_cat=111&_nc_ht=scontent-lga3-1.xx&oh=796b3cb80950be2258440eb7ee9a7984&oe=5D0B4B6F"/>
+                  src = {Logo} />
                   </div>
                   <div id="mainCard" className="card text-center pt-3 shadow-sm">
                      <div className="card-body rounded">
