@@ -11,3 +11,17 @@
     padding: 15px;
 
 }
+
+.instruction-card {
+  flex-basis: 100%;
+  text-align: center;
+  /* border: 1px solid black; */
+  height: 250px;
+  margin-top: 10px;
+}
+
+.instructionGIF {
+    max-width: 350px;
+    max-height: 200px;
+    margin: 10px;
+}
