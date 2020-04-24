@@ -148,14 +148,12 @@ class Admin extends Component {
                     <div className="row">
                         <Voters />
                     </div> */}
-                    <div className="d-flex justify-content-around">
-                    <div className="row justify-content-center">
-                        <button 
-                            className="btn btn-outline-dark btn-lg p-2" 
-                            onClick={this.resultPoll}
-                            >{this.state.pollResulted ? "Unresult Poll" : "Result Poll"}
-                        </button>
-                    </div>
+                    <div>
+                        <h1>Welcome to Poll Admin page</h1>
+                        <h4>Return here to manage the poll</h4>
+                    </div><br></br><br></br>
+                    <div className="d-flex flex-row justify-content-around">
+                    <div className="d-flex flex-column justify-content-around border border-dark rounded pl-4 pr-4">
                     <div className="row justify-content-center">
                         <button 
                             id="goToPollButton"
@@ -167,6 +165,13 @@ class Admin extends Component {
                     </div>
                     <div className="row justify-content-center">
                         <button 
+                            className="btn btn-outline-dark btn-lg p-2" 
+                            onClick={this.resultPoll}
+                            >{this.state.pollResulted ? "Unresult Poll" : "Result Poll"}
+                        </button>
+                    </div>
+                    <div className="row justify-content-center ml-3 mr-3">
+                        <button 
                             id="resultsButton"
                             disabled={!this.state.pollResulted}
                             className="btn btn-outline-dark btn-lg p-2" 
@@ -175,12 +180,18 @@ class Admin extends Component {
                         </button>
                     </div>
                     </div>
-                    <br></br>
-                    <div className="row justify-content-center">
-                        <Link pollLink={this.state.pollLink} copyLink={this.copyLink}/>
+
+                    <div className="d-flex flex-column justify-content-around">
+                    <div className="d-flex">
+                        <Link pollLink={this.state.pollLink} copyLink={this.copyLink} linkText="Poll Link:"/>
+                    </div><br></br>
+                    <div className="d-flex">
+                        <Link pollLink={window.location.toString()} copyLink={this.copyLink} linkText="Admin Link:"/>
                     </div><br></br><br></br>
-                    <div className="row justify-content-center">
+                    <div className="row justify-content-center border border-dark rounded p-3">
                         <Voters voters={this.state.voters}/>
+                    </div>
+                    </div>
                     </div>
                     </div>
                 </Container>
