@@ -6,7 +6,7 @@ function Link(props) {
       <div className = "fluid-container justify-content-center border-rounded" >
           <div className='row justify-content-center d-flex'>
                 {/* <h4 className ="pr-3">Copy</h4> */}
-                <button className="btn btn-outline-dark btn" style={{lineHeight: 1}} onClick={props.copyLink}>Copy</button>
+                <p className="d-flex flex-column justify-content-center align-middle mr-2" style={{lineHeight:1, margin:0}}>{props.linkText}</p>
                 <div>
                     <input
                         id="pollLink"
@@ -16,6 +16,7 @@ function Link(props) {
                         >
                     </input>
                 </div>
+                <button className="btn btn-outline-dark btn" style={{lineHeight: 1}} onClick={props.copyLink}>Copy</button>
             </div>
       </div>
   )
