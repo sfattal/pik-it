@@ -10,8 +10,7 @@ function Voters(props) {
     } 
     else {
       return (
-        <div className="voters px-4">
-            <h4 className ="pb-2">The following users have pik'd it:</h4>
+        <div className="voters m-4 pl-4">
             { props.voters.map((voter) => {
                 // console.log(choice)
                 return (

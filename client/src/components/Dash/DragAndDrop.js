@@ -111,7 +111,7 @@ function DragAndDrop(props) {
                         >
                             {choice.choiceType==="link" ?
                                         <a href={choice.choiceValue} target="_blank" rel="noopener noreferrer" >{choice.choiceLabel}</a> :
-                                        <p>{choice.choiceLabel}</p>}
+                                        <span>{choice.choiceLabel}</span>}
                             {/* {choice.choiceLabel}
                             {choice.choiceType==="link" ? 
                             <a 
@@ -159,7 +159,7 @@ function DragAndDrop(props) {
                                     >
                                         {ranking.choiceType==="link" ?
                                         <a href={ranking.choiceValue} target="_blank" rel="noopener noreferrer" >{ranking.choiceLabel}</a> :
-                                        <p>{ranking.choiceLabel}</p>}
+                                        <span>{ranking.choiceLabel}</span>}
                                         {/* {index+1} - {ranking.choiceLabel} */}
                                         {/* {ranking.choiceType==="link" ? 
                                             <a className="choiceBox" href={ranking.choiceValue} target="_blank" rel="noopener noreferrer">

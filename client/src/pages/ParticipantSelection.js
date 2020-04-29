@@ -293,6 +293,9 @@ class ParticipantSelection extends Component {
                 <Container>
                     < div className = "border-rounded pt-2 p-3 rounded shadow bg-white" >
                     <br></br>
+                    <div>
+                        <h2>Submit your pik</h2>
+                    </div><br></br>
                     <div className="row justify-content-left p-3">
                         <Name 
                             participantName={this.state.participantName}

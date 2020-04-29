@@ -107,7 +107,8 @@ module.exports = {
             include: {all: true}
         }).then(function(dbResult) {
             var rankings = []
-            var poll_id = dbResult[0].id
+            var pollId = dbResult[0].id
+            const pollTitle = dbResult[0].poll_name
             const choices = dbResult[0].Choices
             const responses = dbResult[0].Responses
             const voters = dbResult[0].Users
@@ -118,7 +119,9 @@ module.exports = {
                 var index = (choices[i].dataValues.id);
                 var choiceRes = {
                     choiceId: choices[i].dataValues.id,
-                    choiceName: choices[i].dataValues.choiceValue,
+                    choiceType: choices[i].dataValues.choiceType,
+                    choiceValue: choices[i].dataValues.choiceValue,
+                    choiceLabel: choices[i].dataValues.choiceLabel,
                     choiceRank: 0
                 }
                 rankings.push(choiceRes)
@@ -139,6 +142,8 @@ module.exports = {
             console.log(rankings)
             res.send({
                 rankings: rankings,
+                pollId: pollId,
+                pollTitle: pollTitle,
                 pollResulted: pollResulted,
                 voters: voters
             })
