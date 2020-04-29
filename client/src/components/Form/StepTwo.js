@@ -4,7 +4,8 @@ function StepTwo(props) {
   console.log(props) //REMOVE
   return (
     < div className = "fluid-container justify-content-center border-rounded pt-5 p-3 rounded shadow bg-white" >
-      <h3 className =""> Please enter poll choices here</h3>
+      <h2>{props.pollTitle}</h2>
+      <h5 className =""> Please enter poll choices below:</h5>
       <div className="pt-3">
               < div className = "row justify-content-center flex-row" >
                     <div className='col-8'>
@@ -14,7 +15,7 @@ function StepTwo(props) {
                         type='text'
                         onChange={props.handleChoiceChanged}
                         onKeyPress={props.handleEnter}
-                        value={props.choice}
+                        value={props.choiceInput}
                         autoFocus
                         />
                   </div>
@@ -30,7 +31,7 @@ function StepTwo(props) {
       </div>
       <div className='row pt-3'>
           <div className='col-12 justify-content-space-evenly'>
-            <button class="btn btn-outline-dark btn-lg p-2" onClick={props.setPageBack}>Back</button>
+            <button className="btn btn-outline-dark btn-lg p-2" onClick={props.setPageBack}>Back</button>
             {/* <button class="btn btn-outline-dark btn-lg" id="next-button" onClick={props.setPageNext}>Next</button> */}
             <button id="submitButton" className="btn btn-outline-dark btn-lg p-2" onClick={props.submit}>Submit</button>
         </div>

@@ -22,11 +22,14 @@ class ParticipantSelection extends Component {
             pollID: '',
             pollKey: '',
             pollLink: '',
+            // iframeDestination: '',
+            // modalShow: false,
             pollResulted: false
         }
         this.handleNameChanged = this.handleNameChanged.bind(this);
         this.copyLink = this.copyLink.bind(this);
         this.onChoiceClick = this.onChoiceClick.bind(this);
+        this.onLinkClick = this.onLinkClick.bind(this);
     }
 
     getList = id => this.state[id];
@@ -72,8 +75,7 @@ class ParticipantSelection extends Component {
         console.log(selectedChoice)
         const choiceArr = this.state.allChoices
         const rankingsArr = this.state.rankSelection
-        const choiceIndex = choiceArr.findIndex( x => x.choice_text === selectedChoice)
-        const choiceElem = choiceArr[choiceIndex]
+        const choiceIndex = choiceArr.findIndex( x => x.choiceValue === selectedChoice)
         const [removed] = choiceArr.splice(choiceIndex, 1)
         console.log(removed)
         rankingsArr.push(removed)
@@ -81,6 +83,17 @@ class ParticipantSelection extends Component {
             allChoices: choiceArr,
             rankSelection: rankingsArr
         })
+    }
+
+    onLinkClick = (event) => {
+        event.preventDefault()
+        console.log(event.currentTarget)
+        console.log(event.currentTarget.attributes.href.value)
+        const iframeDest = event.currentTarget.attributes.href.value
+        this.setState( prevState => ({
+            iframeDestination: iframeDest,
+            modalShow: !prevState.modalShow
+        }))
     }
 
 
@@ -286,13 +299,20 @@ class ParticipantSelection extends Component {
                             handleNameChanged={this.handleNameChanged}
                         /> {console.log(this.state)}
                     </div>
+                    <div className="d-flex flex-row justify-content-around">
                     <div className ="row justify-content-center">
                         <DragAndDrop 
                             choices={this.state.allChoices}
                             rankings={this.state.rankSelection}
                             onDragEnd={this.onDragEnd}
                             onChoiceClick={this.onChoiceClick}
+                            onLinkClick={this.onLinkClick}
                         />
+                    </div>
+                    {/* <iframe id="linkPreview" title="linkPreview" src={this.state.iframeDestination} style={{
+                    transform: this.state.modalShow ? 'translateY(0vh)' : 'translateY(-100vh)',
+                    opacity: this.state.modalShow ? '1' : '0', width: '500px'
+                }}></iframe> */}
                     </div>
                     {/* < div className ="row justify-content-center">
                         <div className = "col-5">

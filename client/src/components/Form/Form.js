@@ -5,6 +5,16 @@ import StepThree from './StepThree'
 import AddChoice from './AddChoice'
 import './style.css'
 
+const metascraper = require('metascraper')([
+  // require('metascraper-description')(),
+  // require('metascraper-image')(),
+  // require('metascraper-logo')(),
+  require('metascraper-title')(),
+  // require('metascraper-url')()
+])
+
+const got = require('got')
+
 
 const axios = require('axios')
 
@@ -17,7 +27,7 @@ export class Form extends React.Component {
       key: '',
       admin_key: '',
       email: '',
-      choice: '',
+      choiceInput: '',
       choices: [],
       date: new Date(),
       page: 1 // default form to step 1
@@ -27,6 +37,7 @@ export class Form extends React.Component {
     this.handleDescChanged = this.handleDescChanged.bind(this);
     this.handleEmailChanged = this.handleEmailChanged.bind(this);
     this.handleChoiceChanged = this.handleChoiceChanged.bind(this);
+    this.handleChoiceLabelChanged = this.handleChoiceLabelChanged.bind(this)
     this.handleChoicesChanged = this.handleChoicesChanged.bind(this);
     this.handleEnter = this.handleEnter.bind(this)
     this.handleDateChanged = this.handleDateChanged.bind(this);
@@ -75,7 +86,8 @@ export class Form extends React.Component {
           setPageNext={this.setPageNext}
           setPageBack={this.setPageBack}
           renderPage={this.renderPage}
-          choice={this.state.choice}
+          pollTitle={this.state.title}
+          choiceInput={this.state.choiceInput}
           choices={this.state.choices}
           emptyString={this.emptyString} 
           duplicateChoice={this.duplicateChoice} 
@@ -126,13 +138,16 @@ export class Form extends React.Component {
   }
 
   addChoice = () => {
-    var {choice, choices} = this.state;
-    var choicesLC = choices.map((choice) => { return choice.toLowerCase() })
-    var choiceLC = choice.toLowerCase()
+    var {choiceInput, choices} = this.state;
+    var choicesLC = choices.map((choice) => { return choice.choiceValue.toLowerCase() })
+    var choiceLC = choiceInput.toLowerCase()
     console.log(process.env)
     console.log(choicesLC)
 
-    if (choice === "") {
+    var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+    var regex = new RegExp(expression);
+
+    if (choiceInput === "") {
       // this.emptyString();
       document.getElementById("submitButton").focus()
     }
@@ -142,18 +157,76 @@ export class Form extends React.Component {
     else if ( choicesLC.includes (choiceLC) ) {
       this.duplicateChoice();
     }
+    // check to see if choice is link and if it is, save input as choiceValue and scrape og:title to be choiceLabel
+    else if ( choiceLC.match(regex) ) {
+      if (!/^https?:\/\//i.test(choiceInput)) {
+          choiceInput = 'http://' + choiceInput;
+      }
+
+      ;(async () => {
+        const { body: html, url } = await got('https://cors-anywhere.herokuapp.com/' + choiceLC)
+        const metadata = await metascraper({ html, url })
+        console.log(metadata)
+
+        const choiceObj = {
+          choiceType: "link",
+          choiceValue: choiceInput,
+          choiceLabel: metadata.title
+        }
+        const newChoices = [...choices, choiceObj]
+        this.setState({choices: newChoices, choiceInput: ""})
+      })()
+
+      // const choiceObj = {
+      //   choiceType: "link",
+      //   choiceValue: choiceInput,
+      //   choiceLabel: metadata.title
+      // }
+      // const newChoices = [...choices, choiceObj]
+      // this.setState({choices: newChoices, choiceInput: ""})
+    }
+    //if choice is not a link, add it as an object to the existing choices array
     else {
-      const newChoices = [...choices, choice]
-      this.setState({choices: newChoices, choice: ""})
+      const choiceObj = {
+        choiceType: "text",
+        choiceValue: choiceInput,
+        choiceLabel: choiceInput
+      }
+      const newChoices = [...choices, choiceObj]
+      this.setState({choices: newChoices, choiceInput: ""})
     }
   }
 
-  deleteChoice = () => {
+  deleteChoice = (event) => {
       console.log('delete choice')
+      console.log(event.target)
+      const currentState = this.state.choices
+      const futureState = currentState.splice(event.target.attributes.index.value, 1)
+      this.setState({ choices: currentState })
   }
 
   handleChoiceChanged (event) {
-    this.setState({choice: event.target.value})
+    this.setState({choiceInput: event.target.value})
+  }
+
+  handleChoiceLabelChanged (event) {
+    console.log('updating choice label')
+    console.log(event.target)
+    // const {value} = event.target
+    const futureState = this.state.choices
+    const index = event.target.attributes.index.value
+    const value = event.target.attributes.value.value
+    console.log(futureState)
+    console.log(index, value)
+
+  //something is going on here. value is linked to choiceLabel so when
+  //I bring it into here, it's just creating a loop where it's updating choiceLabel with choiceLabel
+    futureState[index].choiceLabel = event.target.value
+    if (futureState[index].choiceType === "text") {
+      futureState[index].choiceValue = event.target.value
+    }
+    console.log(futureState)
+    this.setState({ choices: futureState })
   }
 
   handleChoicesChanged (event) {
@@ -163,7 +236,7 @@ export class Form extends React.Component {
   handleEnter (event) {
     if (event.key === "Enter") {
       console.log("I hit enter!")
-      if (this.choice === "") {
+      if (this.choiceInput === "") {
         console.log('blank choice')
       }
       else {
@@ -174,8 +247,13 @@ export class Form extends React.Component {
 
   renderAddChoices = () => {
     console.log(this.state)
-    return this.state.choices.map(choice => {
-      return <AddChoice choice={choice} deleteChoice={this.deleteChoice}/>
+    return this.state.choices.map( (choice, index) => {
+      return <AddChoice 
+        choice={choice} 
+        index={index} 
+        onChange={this.handleChoiceLabelChanged} 
+        deleteChoice={this.deleteChoice}
+      />
     })
   }
 
@@ -188,7 +266,7 @@ export class Form extends React.Component {
 
   submit = (event) => {
     event.preventDefault()
-
+    console.log('trying to send data to DB')
     function shortlink (num) { 
       var shortlink = require('shortlink');
       let randVar = shortlink.generate(num); // Random string of 8 characters, e.g. 'PJWn4T42' 

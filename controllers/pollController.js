@@ -118,7 +118,7 @@ module.exports = {
                 var index = (choices[i].dataValues.id);
                 var choiceRes = {
                     choiceId: choices[i].dataValues.id,
-                    choiceName: choices[i].dataValues.choice_text,
+                    choiceName: choices[i].dataValues.choiceValue,
                     choiceRank: 0
                 }
                 rankings.push(choiceRes)
@@ -183,7 +183,9 @@ module.exports = {
         req.body.choices.forEach(choice => {
           db.Choice.create({
               poll_id: id,
-              choice_text: choice
+              choiceType: choice.choiceType,
+              choiceValue: choice.choiceValue,
+              choiceLabel: choice.choiceLabel
           })
         })
         setTimeout(() => {

@@ -6,7 +6,15 @@ module.exports = function(sequelize, DataTypes) {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
-            choice_text: {
+            choiceType: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            choiceValue: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            choiceLabel: {
                 type: DataTypes.STRING,
                 allowNull: false
             }
