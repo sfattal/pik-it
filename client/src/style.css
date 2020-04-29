@@ -21,9 +21,25 @@ body {
 }
 
 .resultsDisplay {
-    background-color: 'white';
-    color: 'blue';
-    height: '50px';
-    width: '200px';
+    padding: 16px;
+    margin: 5px;
+    border-radius: 8px;
+    border-width: 15px;
+    border-color: rgb(255, 255, 255);
+    overflow: auto;
+    background: white;
 
+}
+
+.resultsWinner {
+    background: lightgreen;
+    border-color: black
+}
+
+.allResults {
+    padding: '8px';
+    overflow: 'auto';
+    background: lightgrey
+    /* width: '300px';
+    min-height: '400px'; */
 }

@@ -11,6 +11,7 @@ class Results extends Component {
         super()
         this.state = {
             pollKey: '',
+            pollTitle: '',
             resultsOrder: [],
             voters: [],
             pollResulted: false,
@@ -27,6 +28,7 @@ class Results extends Component {
         .then(data => {
             this.setState({
                 resultsOrder: data.data.rankings,
+                pollTitle: data.data.pollTitle,
                 pollResulted: data.data.pollResulted,
                 voters: data.data.voters
             });
@@ -52,13 +54,25 @@ class Results extends Component {
             <div className ="pt-3">
             <Hero>
                <Container>
-                    < div className ="row justify-content-center">
+                    < div className ="border-rounded pt-2 p-3 rounded shadow bg-white container">
+                        <div className="row justify-content-center">
+                            <h2 className="header p-2" style={{color:'black'}}>Results for '{this.state.pollTitle}'</h2>
+                        </div>
                         {this.state.pollResulted ? 
-                            <div className="d-flex justify-content-xl-between">
-                                <ResultsOrder 
-                                className="px-5" choices={this.state.resultsOrder}/>
-                                <br></br><Voters 
-                                voters={this.state.voters}/>
+                            <div className="row py-3">
+                                <div className="col">
+                                    <h4 className ="">Results:</h4>
+                                    <ResultsOrder 
+                                        className="px-5" 
+                                        choices={this.state.resultsOrder}
+                                    />
+                                </div>
+                                <br></br>
+                                <div className="col">
+                                    <h4 className ="">Pik'rs:</h4>
+                                    <Voters 
+                                    voters={this.state.voters}/>
+                                </div>
                             </div> :
                             <h4>Your poll leader has not yet resulted this poll.</h4>
                         }
