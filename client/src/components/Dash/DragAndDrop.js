@@ -1,5 +1,6 @@
 import React, { Component }  from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
+import Preview from '../../preview.png'
 
 
 // function Quote({ quote, index }) {
@@ -48,7 +49,7 @@ const getListStyle = isDraggingOver => ({
     overflow: 'auto',
     // width: '500px',
     minWidth: '300px',
-    maxWidth: '80%',
+    maxWidth: '100%',
   });
 
   const getListStyle2 = isDraggingOver => ({
@@ -68,6 +69,7 @@ const getListStyle = isDraggingOver => ({
     borderRadius: '8px',
     borderWidth: '15px',
     borderColor: '#fff',
+    overflow: 'auto',
   
     // change background colour if dragging
     background: isDragging ? 'lightgreen' : 'white',
@@ -95,7 +97,7 @@ function DragAndDrop(props) {
                 { (provided, snapshot) => (
                 <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)} {...provided.droppableProps}>
                     {props.choices.map( (choice, index) => (
-                    <Draggable key={choice.id} draggableId={choice.choice_text} index={index} onClick={props.onChoiceClick}>
+                    <Draggable key={choice.id} draggableId={choice.choiceValue} index={index} type={choice.choiceType} onClick={props.onChoiceClick}>
                         {(provided, snapshot) => (
                         <div
                             ref={provided.innerRef}
@@ -107,7 +109,22 @@ function DragAndDrop(props) {
                             provided.draggableProps.style
                             )}
                         >
-                            {choice.choice_text}
+                            {choice.choiceType==="link" ?
+                                        <a href={choice.choiceValue} target="_blank" rel="noopener noreferrer" >{choice.choiceLabel}</a> :
+                                        <p>{choice.choiceLabel}</p>}
+                            {/* {choice.choiceLabel}
+                            {choice.choiceType==="link" ? 
+                            <a 
+                                className="choiceBox"
+                                href={choice.choiceValue} 
+                                target="_blank" 
+                                rel="noopener noreferrer">
+                                < img id = "previewImage"
+                                    alt = "preview"
+                                    height="22"
+                                    src = {Preview} 
+                                />
+                            </a> : ""} */}
                         </div>
                         )}
                     </Draggable>
@@ -128,7 +145,8 @@ function DragAndDrop(props) {
                         ref={provided.innerRef}
                         style={getListStyle2(snapshot.isDraggingOver)}>
                             {props.rankings.map( (ranking, index) => (
-                                <Draggable key={ranking.id} draggableId={ranking.choice_text} index={index} onClick={props.onChoiceClick}>
+                                
+                                <Draggable key={ranking.id} draggableId={ranking.choiceValue} index={index} type={ranking.choiceType} onClick={props.onChoiceClick}>
                                     {(provided, snapshot) => (
                                     <div
                                         ref={provided.innerRef}
@@ -139,10 +157,23 @@ function DragAndDrop(props) {
                                         provided.draggableProps.style
                                         )}
                                     >
-                                        {index+1} - {ranking.choice_text}
+                                        {ranking.choiceType==="link" ?
+                                        <a href={ranking.choiceValue} target="_blank" rel="noopener noreferrer" >{ranking.choiceLabel}</a> :
+                                        <p>{ranking.choiceLabel}</p>}
+                                        {/* {index+1} - {ranking.choiceLabel} */}
+                                        {/* {ranking.choiceType==="link" ? 
+                                            <a className="choiceBox" href={ranking.choiceValue} target="_blank" rel="noopener noreferrer">
+                                                <img id = "previewImage"
+                                                    alt = "preview"
+                                                    height="22"
+                                                    src = {Preview} 
+                                                />
+                                            </a> : ""} */}
                                     </div>
                                     )}
                                 </Draggable>
+                                
+                                
                             ))}
                         {provided.placeholder}
                     </div>
