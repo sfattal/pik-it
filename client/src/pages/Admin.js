@@ -44,6 +44,15 @@ class Admin extends Component {
         .catch(function(error) {
             console.log(error);
         });
+
+        document.getElementById('adminSaveMe').style.display="block";
+        document.getElementById('adminSaveMe').style.visibility="visible";
+        document.getElementById('adminSaveMe').style.opacity=1;
+        setTimeout(function(){ document.getElementById('adminSaveMe').style.display="none"; }, 3000);
+        setTimeout(function(){ document.getElementById('adminSaveMe').style.visibility="hidden"; }, 3000);
+        setTimeout(function(){ document.getElementById('adminSaveMe').style.opacity=0; }, 3000);
+        setTimeout(function(){ document.getElementById('adminSaveMe').style.transition="opacity 0.3s"; }, 3000);
+        document.getElementById('adminLink').select();
     }
 
     resultPoll() {
@@ -91,14 +100,16 @@ class Admin extends Component {
         window.location=this.state.pollLink
     }
 
-    copyLink () {
-        const pollLink = window.location.origin.toString() + "/polls/" + this.state.pollKey
-        console.log(pollLink)
+    copyLink (event) {
+        console.log(event.target)
+        const linkValue = event.target.value
+        // var linkValue = window.location.origin.toString() + "/polls/" + this.state.pollKey
+        console.log(linkValue)
 
         // Create new element
         var el = document.createElement('textarea');
         // Set value (string to be copied)
-        el.value = pollLink;
+        el.value = linkValue;
         // Set non-editable to avoid focus and move outside of view
         el.setAttribute('readonly', '');
         el.style = {position: 'absolute', left: '-9999px'};
@@ -110,7 +121,7 @@ class Admin extends Component {
         // Remove temporary element
         document.body.removeChild(el);
         // Highlight the link text in input field as signal to user
-        document.getElementById("pollLink").select()
+        document.getElementById(event.target.attributes.type.value).select()
         console.log("copied link!!!")
     }
 
@@ -182,15 +193,26 @@ class Admin extends Component {
                     </div>
 
                     <div className="d-flex flex-column justify-content-around">
-                    <div className="d-flex">
-                        <Link pollLink={this.state.pollLink} copyLink={this.copyLink} linkText="Poll Link:"/>
-                    </div><br></br>
-                    <div className="d-flex">
-                        <Link pollLink={window.location.toString()} copyLink={this.copyLink} linkText="Admin Link:"/>
-                    </div><br></br><br></br>
-                    <div className="row justify-content-center border border-dark rounded p-3">
-                        <Voters voters={this.state.voters}/>
-                    </div>
+                        <div className="d-flex">
+                            <Link 
+                                pollLink={this.state.pollLink} 
+                                linkType="pollLink" 
+                                copyLink={this.copyLink} 
+                                linkText="Poll Link:"
+                                tooltipText="Share this link with friends to collect their piks."/>
+                        </div><br></br>
+                        <div className="d-flex">
+                            <Link 
+                                pollLink={window.location.toString()} 
+                                linkType="adminLink" 
+                                copyLink={this.copyLink} 
+                                linkText="Admin Link:"
+                                tooltipText="Save this link! You will need to return here to see the results." />
+                        </div><br></br><br></br>
+                        <div className="col border border-dark rounded p-4">
+                            <h4>Pik'rs</h4><br></br>
+                            <Voters voters={this.state.voters}/>
+                        </div>
                     </div>
                     </div>
                     </div>

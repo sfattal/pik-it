@@ -29,3 +29,91 @@
 .header {
     color: black
 }
+
+/* Tooltip container */
+.toooltip {
+    position: absolute;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .toooltip .toooltiptext {
+    visibility: hidden;
+    display: none;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 2px;
+    border-radius: 6px;
+  
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    top: -20px;
+    /* left: 500%; */
+    margin-left: 250px;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  /* Tooltip arrow */
+  .toooltip .toooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .linkComponent:hover .toooltiptext {
+    visibility: visible;
+    display: block;
+    opacity: 1;
+  }
+
+  .toooltip2 {
+    position: absolute;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+
+  .toooltip2 .toooltip2text {
+    visibility: visible;
+    display: block;
+    width: 100px;
+    background-color: #fff06d;
+    color: black;
+    text-align: center;
+    padding: 5px 2px;
+    border-radius: 6px;
+  
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    top: -3px;
+    right: 250px;
+    /* margin-right: 250px; */
+  
+    /* Fade in tooltip */
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+
+  .toooltip2 .toooltip2text::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 100%; /* To the right of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff06d;
+  }
