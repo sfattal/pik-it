@@ -20,6 +20,14 @@ function Navbar() {
             Create
             </Link>
           </li>
+          <li className="nav-item">
+            <Link
+              to="/FAQ"
+              className={window.location.pathname === "/FAQ" ? "nav-link active" : "nav-link"}
+            >
+            FAQ
+            </Link>
+          </li>
           {/* <li className="nav-item">
             <Link
               to="/edit"
