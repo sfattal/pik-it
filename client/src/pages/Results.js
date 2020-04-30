@@ -60,16 +60,16 @@ class Results extends Component {
                         </div>
                         {this.state.pollResulted ? 
                             <div className="row py-3">
-                                <div className="col">
-                                    <h4 className ="">Results:</h4>
+                                <div className="col px-5">
+                                    <h4 className ="mb-3">Results:</h4>
                                     <ResultsOrder 
                                         className="px-5" 
                                         choices={this.state.resultsOrder}
                                     />
                                 </div>
                                 <br></br>
-                                <div className="col">
-                                    <h4 className ="">Pik'rs:</h4>
+                                <div className="col px-5">
+                                    <h4 className ="mb-3">Pik'rs:</h4>
                                     <Voters 
                                     voters={this.state.voters}/>
                                 </div>

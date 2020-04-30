@@ -10,7 +10,7 @@ function Voters(props) {
     } 
     else {
       return (
-        <div className="voters m-4 pl-4">
+        <div className="voters">
             { props.voters.map((voter) => {
                 // console.log(choice)
                 return (
