@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Navbar from './components/Navbar';
 import Home from './pages/Home'
 import Create from './pages/Create'
+import FAQ from './pages/FAQ'
 import Admin from './pages/Admin'
 import "./style.css"
 import ParticipantSelection from './pages/ParticipantSelection'
@@ -18,6 +19,7 @@ class App extends Component {
           
           <Route exact path="/" component={Home} />
           <Route exact path="/create" component={Create} />
+          <Route exact path="/FAQ" component={FAQ} />
           <Route exact path="/polls/admin/:key" component={Admin} />
           <Route exact path="/polls/:key" component={ParticipantSelection} />
           <Route exact path="/thanks" component={Thanks} />
