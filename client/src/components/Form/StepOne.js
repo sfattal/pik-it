@@ -4,8 +4,9 @@ function StepOne(props) {
   console.log(props) //REMOVE
     return (
       <div className = "fluid-container justify-content-center pt-4 p-3 rounded shadow bg-white" >
+        <h2>Create Your Poll</h2><br></br>
         <div className='row justify-content-center d-flex'>
-                    <h4>Title</h4>
+                    <h5>Title</h5>
           <div className='col-12 pb-3 justify-content-center d-flex'>
               <div className="form-group col-6 justify-content-center">
               <input  id ="title" type="text" className="form-control" placeholder="required"   onChange={props.handleTitleChanged}
@@ -15,7 +16,7 @@ function StepOne(props) {
           </div>
         </div>
         <div className='row justify-content-center d-flex'>
-              <h4> Description</h4>
+              <h5> Description</h5>
           <div className = 'col-12 pb-3 justify-content-center d-flex'>
               <div className="form-group col-6 justify-content-center">
                   <input id ="desc" type="text" className="form-control" placeholder="optional"
@@ -25,7 +26,7 @@ function StepOne(props) {
             </div>
         </div>
           <div className='row justify-content-center d-flex'>
-                <h4> Email</h4>
+                <h5> Email</h5>
                 <div className = 'col-12 pb-3 justify-content-center d-flex' >
                     <div className="form-group col-6 justify-content-center">
                     <input id="email" type="text" className="form-control" placeholder="required" onChange={props.handleEmailChanged}

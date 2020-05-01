@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Container from '../components/Container'
 import Hero from '../components/Hero/index'
+import GIFs from '../components/Dash/GIFRibbon'
 import Logo from '../logo.png'
 import CreateGIF from '../create.gif'
 import RankGIF from '../rank.gif'
@@ -25,9 +26,9 @@ class Home extends Component {
                         <a href="/create" className="btn btn-outline-dark btn-lg">Create</a>
                      </div>
                   </div>
-                  <div id="instructionsCard" className="card text-center shadow-sm mt-3">
+                  <GIFs />
+                  {/* <div id="instructionsCard" className="card text-center shadow-sm mt-3">
                      <div className="card-body rounded">
-                        {/* <h5 className="card-title">This is how you Pik It!</h5> */}
                         <div className="d-flex flex-row justify-content-around">
                            <div className="d-flex flex-column instruction-card border-right">
                               <p className="card-text">1 - Create</p>
@@ -41,12 +42,9 @@ class Home extends Component {
                               <p className="card-text">3 - Pik It!</p>
                               <img className="instructionGIF" src = {ResultGIF} />
                            </div>
-                           
-                           {/* <p className="card-text border-right instructions">Share and Rank</p>
-                           <p className="card-text instructions">Pik It!</p> */}
                         </div>
                      </div>
-                  </div>
+                  </div> */}
                </Container>
             </Hero>
          </div>
