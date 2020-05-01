@@ -7,7 +7,7 @@
 
 #logoImage {
     width: auto; 
-    height: 290px;
+    height: 250px;
     padding: 15px;
 
 }
@@ -21,8 +21,8 @@
 }
 
 .instructionGIF {
-    max-width: 350px;
-    max-height: 200px;
+    max-width: 95%;
+    max-height: 100%;
     margin: 10px;
 }
 
@@ -116,4 +116,11 @@
     border-width: 5px;
     border-style: solid;
     border-color: transparent transparent transparent #fff06d;
+  }
+
+  .protip {
+    background: lightblue;
+    padding: 10px;
+    border: 1px solid black;
+    /* width: 50% */
   }

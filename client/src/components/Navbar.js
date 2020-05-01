@@ -1,6 +1,6 @@
 import React from 'react';
 import "./navbar.css"
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Logo from '../logoNav.png'
 
 function Navbar() {
@@ -13,20 +13,20 @@ function Navbar() {
       <div>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link
+            <NavLink
               to="/create"
-              className={window.location.pathname === "/create" ? "nav-link active" : "nav-link"}
-            >
-            Create
-            </Link>
+              className="nav-link"
+              activeClassName="nav-link active"
+            >Create
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link
+            <NavLink
               to="/FAQ"
-              className={window.location.pathname === "/FAQ" ? "nav-link active" : "nav-link"}
-            >
-            FAQ
-            </Link>
+              className="nav-link"
+              activeClassName="nav-link active"
+            >FAQ
+            </NavLink>
           </li>
           {/* <li className="nav-item">
             <Link

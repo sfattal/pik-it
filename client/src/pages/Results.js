@@ -59,8 +59,8 @@ class Results extends Component {
                             <h2 className="header p-2" style={{color:'black'}}>Results for '{this.state.pollTitle}'</h2>
                         </div>
                         {this.state.pollResulted ? 
-                            <div className="row py-3">
-                                <div className="col px-5">
+                            <div className="row p-3">
+                                <div className="col border border-dark rounded py-4 mx-5">
                                     <h4 className ="mb-3">Results:</h4>
                                     <ResultsOrder 
                                         className="px-5" 
@@ -68,7 +68,7 @@ class Results extends Component {
                                     />
                                 </div>
                                 <br></br>
-                                <div className="col px-5">
+                                <div className="col border border-dark rounded py-4 mx-5">
                                     <h4 className ="mb-3">Pik'rs:</h4>
                                     <Voters 
                                     voters={this.state.voters}/>

@@ -160,8 +160,8 @@ class Admin extends Component {
                         <Voters />
                     </div> */}
                     <div>
-                        <h1>Welcome to Poll Admin page</h1>
-                        <h4>Return here to manage the poll</h4>
+                        <h2>Poll Dashboard</h2>
+                        <h5>Use this page to manage your poll</h5>
                     </div><br></br><br></br>
                     <div className="d-flex flex-row justify-content-around">
                     <div className="d-flex flex-column justify-content-around border border-dark rounded pl-4 pr-4">
@@ -178,7 +178,7 @@ class Admin extends Component {
                         <button 
                             className="btn btn-outline-dark btn-lg p-2" 
                             onClick={this.resultPoll}
-                            >{this.state.pollResulted ? "Unresult Poll" : "Result Poll"}
+                            >{this.state.pollResulted ? "Re-open Poll" : "Close Poll"}
                         </button>
                     </div>
                     <div className="row justify-content-center ml-3 mr-3">
@@ -206,7 +206,7 @@ class Admin extends Component {
                                 pollLink={window.location.toString()} 
                                 linkType="adminLink" 
                                 copyLink={this.copyLink} 
-                                linkText="Admin Link:"
+                                linkText="Dashboard:"
                                 tooltipText="Save this link! You will need to return here to see the results." />
                         </div><br></br><br></br>
                         <div className="col border border-dark rounded p-4">

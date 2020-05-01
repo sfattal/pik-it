@@ -3,8 +3,11 @@ import React from 'react'
 function StepTwo(props) {
   console.log(props) //REMOVE
   return (
-    < div className = "fluid-container justify-content-center border-rounded pt-5 p-3 rounded shadow bg-white" >
-      <h2>{props.pollTitle}</h2>
+    < div className = "fluid-container justify-content-center border-rounded pt-4 p-3 rounded shadow bg-white" >
+      <div className="">
+        <h2>{props.pollTitle}</h2>
+        <h6 className="pollDescription" style={{color:"grey"}}>{props.pollDescription}</h6><br></br>
+      </div>
       <h5 className =""> Please enter poll choices below:</h5>
       <div className="pt-3">
               < div className = "row justify-content-center flex-row" >

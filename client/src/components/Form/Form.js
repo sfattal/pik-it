@@ -87,6 +87,7 @@ export class Form extends React.Component {
           setPageBack={this.setPageBack}
           renderPage={this.renderPage}
           pollTitle={this.state.title}
+          pollDescription={this.state.desc}
           choiceInput={this.state.choiceInput}
           choices={this.state.choices}
           emptyString={this.emptyString} 
