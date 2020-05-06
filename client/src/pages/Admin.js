@@ -3,6 +3,7 @@ import axios from 'axios'
 import Container from '../components/Container'
 import Voters from '../components/Dash/Voters'
 import Link from '../components/Dash/Link'
+import Logo from '../logo.png'
 import './pages.css'
 
 class Admin extends Component {
@@ -56,12 +57,7 @@ class Admin extends Component {
     }
 
     resultPoll() {
-        // this.setState( prevState => {
-        //     console.log(prevState)
-        //     return {
-        //         pollResulted: !prevState.pollResulted
-        //     }
-        // })
+
         if (this.state.voters.length < 2) {
             alert("Can't result poll before 2 users have submitted")
         } else {
@@ -127,38 +123,13 @@ class Admin extends Component {
 
     render() {
         return (
-            <div className ="fluid-container justify-content-center pt-3"> 
+            <div className ="fluid-container justify-content-center"> 
                 <Container>
+                    < img id = "logoImage"
+                            alt = "logo"
+                            src = {Logo} />
                     < div className = "border-rounded pt-2 p-3 rounded shadow bg-white" >
                     <br></br>
-                    {/* <div className="row justify-content-left p-3">
-                        <Name 
-                            participantName={this.state.participantName}
-                            handleNameChanged={this.handleNameChanged}
-                        /> {console.log(this.state)}
-                    </div>
-                    < div className ="row justify-content-center">
-                        <div className = "col-5">
-                        <AllChoices 
-                            choices={this.state.allChoices} 
-                            sortChoice={this.sortChoice}
-                            positions={this.state.userOrder}
-                            removeChoice={this.removeChoice}
-                        />
-                        </div>
-                        <div className="col-7">
-                        <ChoiceOrder 
-                            positions={this.state.userOrder}
-                            removeChoice={this.removeChoice}
-                        />
-                        </div>
-                    </div>
-                    <div className="row justify-content-center p-3">
-                        <Link pollKey={this.state.pollKey} copyLink={this.copyLink}/>
-                    </div>
-                    <div className="row">
-                        <Voters />
-                    </div> */}
                     <div>
                         <h2>Poll Dashboard</h2>
                         <h5>Use this page to manage your poll</h5>

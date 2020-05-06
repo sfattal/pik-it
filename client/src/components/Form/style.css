@@ -1,3 +1,9 @@
 .choiceBox {
     float:right
 }
+
+.formButton {
+    margin: 5px;
+    padding: .5rem;
+    min-width: 80px;
+}

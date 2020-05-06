@@ -3,8 +3,6 @@ import axios from 'axios'
 import Container from '../components/Container'
 import Name from '../components/Dash/Name';
 import Link from '../components/Dash/Link'
-import AllChoices from '../components/Dash/AllChoices'
-import ChoiceOrder from '../components/Dash/ChoiceOrder'
 import DragAndDrop from '../components/Dash/DragAndDrop'
 
 // import Voters from '../components/Dash/Voters'
@@ -20,6 +18,7 @@ class ParticipantSelection extends Component {
             rankSelection: [],
             participantName: '',
             pollID: '',
+            pollTitle: '',
             pollKey: '',
             pollLink: '',
             // iframeDestination: '',
@@ -54,10 +53,13 @@ class ParticipantSelection extends Component {
         this.setState( { pollKey: this.props.match.params.key } )
         axios.get('/api' + this.props.match.url)
         .then(json => {
+            console.log(json)
             this.setState({
                 allChoices: json.data[0].Choices,
                 numChoices: json.data[0].Choices.length,
                 pollID: json.data[0].Choices[0].poll_id,
+                pollTitle: json.data[0].poll_name,
+                pollDescription: json.data[0].poll_description,
                 pollLink: pollLinkBase + this.state.pollKey,
             });
             if (json.data[0].poll_resulted) {
@@ -115,21 +117,9 @@ class ParticipantSelection extends Component {
 
     onDragEnd = result => {
 
-        // a little function to help us with reordering the result
+        // this will reorder the results
         const reorder = (list, startIndex, endIndex) => {
             const result = Array.from(list);
-            // const result = list
-            // console.log("result:")
-            // console.log(result)
-            // console.log(result[0])
-            // console.log(result[1])
-            // console.log(result[2])
-            // console.log(result[3])
-            // console.log("start index: " + startIndex)
-            // console.log("end index: " + endIndex)
-            // console.log(result.splice(startIndex, 1))
-            // console.log(result.splice(endIndex))
-            // console.log(result[startIndex-1])
             const [removed] = result.splice(startIndex, 1);
             console.log("removed")
             console.log(removed)
@@ -139,9 +129,7 @@ class ParticipantSelection extends Component {
             return result;
         };
 
-        /**
-         * Moves an item from one list to another list.
-         */
+        // moves an item from one list to another list.
         const move = (source, destination, droppableSource, droppableDestination) => {
             const sourceClone = Array.from(source);
             const destClone = Array.from(destination);
@@ -293,9 +281,10 @@ class ParticipantSelection extends Component {
                 <Container>
                     < div className = "border-rounded pt-2 p-3 rounded shadow bg-white" >
                     <br></br>
-                    <div>
-                        <h2>Submit your pik</h2>
-                    </div><br></br>
+                    <div className="">
+                        <h2>{this.state.pollTitle}</h2>
+                        <h6 className="pollDescription" style={{color:"grey"}}>{this.state.pollDescription}</h6><br></br>
+                    </div>
                     <div className="row justify-content-left p-3">
                         <Name 
                             participantName={this.state.participantName}

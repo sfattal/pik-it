@@ -1,44 +1,5 @@
-import React, { Component }  from 'react'
+import React from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
-import Preview from '../../preview.png'
-
-
-// function Quote({ quote, index }) {
-//   return (
-//     <Draggable draggableId={quote.id} index={index}>
-//       {provided => (
-//         <QuoteItem
-//           ref={provided.innerRef}
-//           {...provided.draggableProps}
-//           {...provided.dragHandleProps}
-//         >
-//           {quote.content}
-//         </QuoteItem>
-//       )}
-//     </Draggable>
-//   );
-// }
-
-// const QuoteList =  props.choices.map((choice, index) => (
-//     <Draggable key={choice.id} draggableId={choice.id} index={index}>
-//         {(provided, snapshot) => (
-//         <div
-//             ref={provided.innerRef}
-//             {...provided.draggableProps}
-//             {...provided.dragHandleProps}
-//             // style={getItemStyle(
-//             // snapshot.isDragging,
-//             // provided.draggableProps.style
-//             // )}
-//         >
-//             {choice.content}
-//         </div>
-//         )}
-//     </Draggable>
-    // <button choice={choice} index={index} key={choice.id}>
-    // {choice.choice_text} </button>
-//   ));
-// });
 
 const grid = 8
 
@@ -93,7 +54,7 @@ function DragAndDrop(props) {
     <div className="flex-column justify-content-center">
         <h5>Available choices:</h5>
         <div className="d-flex justify-content-center">
-            <Droppable droppableId="allChoices" direction="horizontal">
+            <Droppable droppableId="allChoices" isDropDisabled={true} direction="horizontal">
                 { (provided, snapshot) => (
                 <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)} {...provided.droppableProps}>
                     {props.choices.map( (choice, index) => (
@@ -112,32 +73,19 @@ function DragAndDrop(props) {
                             {choice.choiceType==="link" ?
                                         <a href={choice.choiceValue} target="_blank" rel="noopener noreferrer" >{choice.choiceLabel}</a> :
                                         <span>{choice.choiceLabel}</span>}
-                            {/* {choice.choiceLabel}
-                            {choice.choiceType==="link" ? 
-                            <a 
-                                className="choiceBox"
-                                href={choice.choiceValue} 
-                                target="_blank" 
-                                rel="noopener noreferrer">
-                                < img id = "previewImage"
-                                    alt = "preview"
-                                    height="22"
-                                    src = {Preview} 
-                                />
-                            </a> : ""} */}
                         </div>
                         )}
                     </Draggable>
             ))}
-            {/* <QuoteList quotes={props.choices} /> */}
                     {provided.placeholder}
                 </div>
                 )}
             </Droppable>
+            
         </div>
         <br></br>
         <div className="d-flex flex-column justify-content-center">
-            <h5>Your piks:</h5>
+            <h5>Rank your piks:</h5>
             <div className="d-flex justify-content-center">
             <Droppable droppableId="rankSelection" className="d-flex justify-content-center" direction="vertical">
                 {(provided, snapshot) => (
@@ -160,15 +108,6 @@ function DragAndDrop(props) {
                                         {ranking.choiceType==="link" ?
                                         <a href={ranking.choiceValue} target="_blank" rel="noopener noreferrer" >{ranking.choiceLabel}</a> :
                                         <span>{ranking.choiceLabel}</span>}
-                                        {/* {index+1} - {ranking.choiceLabel} */}
-                                        {/* {ranking.choiceType==="link" ? 
-                                            <a className="choiceBox" href={ranking.choiceValue} target="_blank" rel="noopener noreferrer">
-                                                <img id = "previewImage"
-                                                    alt = "preview"
-                                                    height="22"
-                                                    src = {Preview} 
-                                                />
-                                            </a> : ""} */}
                                     </div>
                                     )}
                                 </Draggable>

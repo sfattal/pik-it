@@ -3,9 +3,6 @@ import Container from '../components/Container'
 import Hero from '../components/Hero/index'
 import GIFs from '../components/Dash/GIFRibbon'
 import Logo from '../logo.png'
-import CreateGIF from '../create.gif'
-import RankGIF from '../rank.gif'
-import ResultGIF from '../result.gif'
 import '../pages/pages.css'
 
 class Home extends Component {
@@ -27,24 +24,6 @@ class Home extends Component {
                      </div>
                   </div>
                   <GIFs />
-                  {/* <div id="instructionsCard" className="card text-center shadow-sm mt-3">
-                     <div className="card-body rounded">
-                        <div className="d-flex flex-row justify-content-around">
-                           <div className="d-flex flex-column instruction-card border-right">
-                              <p className="card-text">1 - Create</p>
-                              <img className="instructionGIF" src = {CreateGIF} />
-                           </div>
-                           <div className="d-flex flex-column instruction-card border-right">
-                              <p className="card-text">2 - Share &amp; Rank</p>
-                              <img className="instructionGIF" src = {RankGIF} />
-                           </div>
-                           <div className="d-flex flex-column instruction-card">
-                              <p className="card-text">3 - Pik It!</p>
-                              <img className="instructionGIF" src = {ResultGIF} />
-                           </div>
-                        </div>
-                     </div>
-                  </div> */}
                </Container>
             </Hero>
          </div>
