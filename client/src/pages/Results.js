@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import Container from '../components/Container'
 import Hero from '../components/Hero/index'
+import Logo from '../logo.png'
 import ResultsOrder from '../components/Dash/ResultsOrder'
 import Voters from '../components/Dash/Voters'
 import './pages.css'
@@ -51,9 +52,12 @@ class Results extends Component {
 
     render() {
         return (
-            <div className ="pt-3">
-            <Hero>
+
+            // <Hero>
                <Container>
+                < img id = "logoImage"
+                            alt = "logo"
+                            src = {Logo} />
                     < div className ="border-rounded pt-2 p-3 rounded shadow bg-white container">
                         <div className="row justify-content-center">
                             <h2 className="header p-2" style={{color:'black'}}>Results for '{this.state.pollTitle}'</h2>
@@ -78,8 +82,8 @@ class Results extends Component {
                         }
                     </div>
                </Container>
-            </Hero>
-         </div>
+            // </Hero>
+
         )
     }
 }

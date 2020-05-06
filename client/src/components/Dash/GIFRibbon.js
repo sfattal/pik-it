@@ -13,15 +13,15 @@ function GIFs() {
                 <div className="row">
                 <div className="col-lg-4 border-right">
                     <p className="card-text">1 - Create</p>
-                    <img className="instructionGIF" src = {CreateGIF} />
+                    <img className="instructionGIF" alt="" src = {CreateGIF} />
                 </div>
                 <div className="col-lg-4 border-right">
                     <p className="card-text">2 - Share &amp; Rank</p>
-                    <img className="instructionGIF" src = {RankGIF} />
+                    <img className="instructionGIF" alt="" src = {RankGIF} />
                 </div>
                 <div className="col-lg-4">
                     <p className="card-text">3 - Pik It!</p>
-                    <img className="instructionGIF" src = {ResultGIF} />
+                    <img className="instructionGIF" alt="" src = {ResultGIF} />
                 </div>
                 
                 {/* <p className="card-text border-right instructions">Share and Rank</p>

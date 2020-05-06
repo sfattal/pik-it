@@ -4,7 +4,7 @@ import Preview from '../../preview.png'
 
 function AddChoice(props) {
     return (
-        <div className ="row pt-1 justify-content-center d-flex flex-row">
+        <div className ="row pt-1 justify-content-center d-flex flex-row align-items-center">
             <div className ="col-8" style={{display: !props.choice && "none"}}>
             {props.choice.choiceType === "link" ? 
                 <div >
@@ -52,12 +52,12 @@ function AddChoice(props) {
                         src = {Preview} /> : ""} */}
             <div className ="col-1"> 
                 <button 
-                    className =" mt-2 btn btn-danger" 
+                    className ="btn btn-danger" 
                     id="delete" 
                     index={props.index} 
                     style={{display: !props.choice && "none"}} 
                     onClick={props.deleteChoice}
-                >Delete</button>
+                >x</button>
             </div>
         </div>
     )

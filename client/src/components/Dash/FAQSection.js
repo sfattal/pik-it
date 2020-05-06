@@ -31,12 +31,12 @@ class FAQSection extends Component {
         }}
         onClick={onClick}
       >
-        <div >
+        <div className="row justify-content-between align-items-center px-3">
           <h4 className='questionHeader'>{label}</h4>
-          <div style={{ float: 'right' }}
+          <div style={{padding: '5px 10px'}}
             >
-            {/* {!isOpen && <span>&#9650;</span>}
-            {isOpen && <span>&#9660;</span>} */}
+            {/* {!isOpen && <span>(+)</span>} */}
+            {isOpen && <span>(-)</span>}
           </div>
         </div>
         {isOpen && (
